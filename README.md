@@ -1,2 +1,2 @@
 # graduationProject
-GraduationProject
+study hard!
