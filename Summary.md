@@ -38,7 +38,7 @@ text/plain：空格转换为 "+" 加号，但不对特殊字符编码。
 ​	<span style="color:red">特别注意，在form中没有application/json，因为enctype是指定数据的编码方式，而application/json是数据的传输格式，所以后台不能显示的用@RequestBody
 </span>
 
-![1550560440066](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\1550560440066.png)
+![1550560440066](MD_IMAGES\1550560440066.png)
 
 
 
