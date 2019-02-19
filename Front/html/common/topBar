@@ -1,0 +1,17 @@
+<ul>
+    <li>
+        <a style="color: #FF0000">Welcome To Adai Shopping Mall</a>
+    </li>
+    <li>
+        <a href="\Front\html\login\login.html">您好，请登录</a>
+    </li>
+    <li>
+        <a href="\Front\html\login\register.html">免费注册</a>
+    </li>
+    <li>
+        <a>我的购物车</a>
+    </li>
+    <li>
+        <a>我的订单</a>
+    </li>
+</ul>

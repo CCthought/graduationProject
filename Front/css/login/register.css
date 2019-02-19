@@ -1,0 +1,24 @@
+.login {
+    border: 1px solid black;
+    width: 1500px;
+    height: 700px;
+    margin: 30px auto;
+    background-image: url(../../images/login.jpg);
+}
+
+.login .loginPanel {
+    border: 1px solid white;
+    width: 650px;
+    height: 550px;
+    background-color: #DDDDDD;
+    margin-left: 800px;
+    margin-top: 50px;
+}
+
+.login .loginInput {
+    border: 1px solid #DDDDDD;
+    width: 600px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 50px;
+}
