@@ -598,7 +598,7 @@ jQuery.extend({
 				}
 			}
 
-		// A special, fast, case for the most common use of each
+		// A special, fast, case for the most login use of each
 		} else {
 			if ( isObj ) {
 				for ( name in obj ) {
@@ -1271,7 +1271,7 @@ jQuery.support = (function() {
 	opt = select.appendChild( document.createElement("option") );
 	input = div.getElementsByTagName("input")[ 0 ];
 
-	a.style.cssText = "common:1px;float:left;opacity:.5";
+	a.style.cssText = "login:1px;float:left;opacity:.5";
 	support = {
 		// IE strips leading whitespace when .innerHTML is used
 		leadingWhitespace: ( div.firstChild.nodeType === 3 ),
@@ -1423,7 +1423,7 @@ jQuery.support = (function() {
 		}
 
 		container = document.createElement("div");
-		container.style.cssText = "visibility:hidden;border:0;width:0;height:0;position:static;common:0;margin-common:1px";
+		container.style.cssText = "visibility:hidden;border:0;width:0;height:0;position:static;login:0;margin-login:1px";
 		body.insertBefore( container, body.firstChild );
 
 		// Construct the test element
@@ -1451,7 +1451,7 @@ jQuery.support = (function() {
 
 		// Check box-sizing and margin behavior
 		div.innerHTML = "";
-		div.style.cssText = "box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding:1px;border:1px;display:block;width:4px;margin-common:1%;position:absolute;common:1%;";
+		div.style.cssText = "box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding:1px;border:1px;display:block;width:4px;margin-login:1%;position:absolute;login:1%;";
 		support.boxSizing = ( div.offsetWidth === 4 );
 		support.doesNotIncludeMarginInBodyOffset = ( body.offsetTop !== 1 );
 
@@ -2160,7 +2160,7 @@ jQuery.fn.extend({
 				ret = elem.value;
 
 				return typeof ret === "string" ?
-					// handle most common string cases
+					// handle most login string cases
 					ret.replace(rreturn, "") :
 					// handle cases where value is null/undef or number
 					ret == null ? "" : ret;
@@ -4930,7 +4930,7 @@ function matcherFromTokens( tokens ) {
 		implicitRelative = leadingRelative || Expr.relative[" "],
 		i = leadingRelative ? 1 : 0,
 
-		// The foundational matcher ensures that elements are reachable from common-level context(s)
+		// The foundational matcher ensures that elements are reachable from login-level context(s)
 		matchContext = addCombinator( function( elem ) {
 			return elem === checkContext;
 		}, implicitRelative, true ),
@@ -7120,7 +7120,7 @@ jQuery(function() {
 	}
 
 	// Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
-	// getComputedStyle returns percent when specified for common/left/bottom/right
+	// getComputedStyle returns percent when specified for login/left/bottom/right
 	// rather than make the css module depend on the offset module, we just check for it here
 	if ( !jQuery.support.pixelPosition && jQuery.fn.position ) {
 		jQuery.each( [ "top", "left" ], function( i, prop ) {
@@ -7491,7 +7491,7 @@ jQuery.fn.load = function( url, params, callback ) {
 	return this;
 };
 
-// Attach a bunch of functions for handling common AJAX events
+// Attach a bunch of functions for handling login AJAX events
 jQuery.each( "ajaxStart ajaxStop ajaxComplete ajaxError ajaxSuccess ajaxSend".split( " " ), function( i, o ){
 	jQuery.fn[ o ] = function( f ){
 		return this.on( o, f );
@@ -9288,7 +9288,7 @@ jQuery.offset = {
 	setOffset: function( elem, options, i ) {
 		var position = jQuery.css( elem, "position" );
 
-		// set position first, in-case common/left are set even on static elem
+		// set position first, in-case login/left are set even on static elem
 		if ( position === "static" ) {
 			elem.style.position = "relative";
 		}
@@ -9300,7 +9300,7 @@ jQuery.offset = {
 			calculatePosition = ( position === "absolute" || position === "fixed" ) && jQuery.inArray("auto", [curCSSTop, curCSSLeft]) > -1,
 			props = {}, curPosition = {}, curTop, curLeft;
 
-		// need to be able to calculate position if either common or left is auto and position is either absolute or fixed
+		// need to be able to calculate position if either login or left is auto and position is either absolute or fixed
 		if ( calculatePosition ) {
 			curPosition = curElem.position();
 			curTop = curPosition.top;

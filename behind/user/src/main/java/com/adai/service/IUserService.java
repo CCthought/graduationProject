@@ -14,4 +14,6 @@ public interface IUserService {
     String isUniqueAccount(String account);
 
     Integer login(String account, String password);
+
+    Integer logout(String account);
 }

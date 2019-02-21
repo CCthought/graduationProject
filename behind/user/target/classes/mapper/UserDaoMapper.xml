@@ -9,7 +9,7 @@
     <sql id="All_columns">
       account,realname,password,phone,email,sex,registerTime,
     </sql>
-    
+
     <sql id="All_values">
         #{account},
         #{realname},
@@ -23,20 +23,27 @@
         INSERT INTO
         <include refid="Table_Name"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <include refid="All_columns" />
+            <include refid="All_columns"/>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
-            <include refid="All_values" />
+            <include refid="All_values"/>
         </trim>
     </insert>
+
     <select id="isUniqueAccount" resultType="java.lang.String" parameterType="java.lang.String">
-      select account from
-      <include refid="Table_Name" />
-      where account = #{account}
+        select account from
+        <include refid="Table_Name"/>
+        where account = #{account}
     </select>
     <select id="login" resultType="java.lang.Integer">
         select count(*) from
-        <include refid="Table_Name" />
+        <include refid="Table_Name"/>
         where account = #{arg0} and password = #{arg1}
     </select>
+
+    <delete id="logout" parameterType="java.lang.String">
+        delete from
+        <include refid="Table_Name"/>
+        where account = #{account}
+    </delete>
 </mapper>

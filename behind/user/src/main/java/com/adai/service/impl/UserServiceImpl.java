@@ -32,4 +32,9 @@ public class UserServiceImpl implements IUserService {
     public Integer login(String account, String password) {
         return userdao.login(account, password);
     }
+
+    @Override
+    public Integer logout(String account) {
+        return userdao.logout(account);
+    }
 }

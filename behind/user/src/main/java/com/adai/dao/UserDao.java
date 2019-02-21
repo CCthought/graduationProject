@@ -10,4 +10,5 @@ public interface UserDao {
     Integer insert(User user);
     String isUniqueAccount(String account);
     Integer login(String account, String password);
+    Integer logout(String account);
 }

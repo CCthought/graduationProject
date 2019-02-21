@@ -3,19 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <title>Adai Shopping Mall</title>
-    <meta name="description" content="To be a good person" />
-    <meta name="Keywords" content="FLIPPED" />
-
+    <meta name="description" content="To be a good person"/>
+    <meta name="Keywords" content="FLIPPED"/>
+    <!--因为所有页面都要引入该topBar.html 所以以下属性是公共的-->
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common/topBar.css"/>
+    <script src="js/jquery.js"></script>
+    <script src="js/common/topBar.js"></script>
     <!--引入导航栏-->
-    <link rel="import" href="html/common/topBar.html" id="topBar"/>
-
+    <script src="js/jquery.js"></script>
     <script type="text/javascript">
-        let topBar = document.getElementById('topBar');
-        document.write(topBar.import.body.innerHTML);
+        //在js中引入
+        $(document).ready(function () {
+            $('.topBar').load('html/common/topBar');
+        });
     </script>
+    <!--因为所有页面都要引入该topBar.html 所以以上属性是公共的-->
+
+    <!--该页面的 专属css-->
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <!--该页面的 专属js-->
+    <script src="index.js" type="text/javascript"></script>
+
 
 </head>
 <body>
-    hello world
+<!--让jQuery引入topBar start-->
+<div class="topBar"></div>
+<!--让jQuery引入topBar end-->
+
+<!--搜索div start*********************************************************************************************-->
+<div class = "search">
+    <div class="search-left">
+        <img src="images/index/search.png" alt="welcome to Adai shopping Mall" width="100%" height="100%"/>
+    </div>
+
+    <div class="search-middle">
+        <label>
+            <input class="search-middle-input" name="search"/>
+            <button class="search-middle-button">搜索</button>
+        </label>
+    </div>
+</div>
+<!--搜索div end*********************************************************************************************-->
+
+<!--core div start*************************************************************************************************-->
+<div id="core" class="core">
+    <div class="core-left">
+        <ul>
+            <li id="clothes-li">衣服</li>
+            <li id="food-li">美食</li>
+            <li id="book-li">书籍</li>
+            <li id="poster-li">海报</li>
+        </ul>
+    </div>
+    <div class="core-middle">
+        <ul class="core-middle-ul">
+            <li><a href="javascript:void(0);"><img src="images/clothes/04.png" alt="" width="650" height="300" /></a></li>
+            <li><a href="javascript:void(0);"><img src="images/clothes/05.png" alt="" width="650" height="300" /></a></li>
+            <li><a href="javascript:void(0);"><img src="images/food/01.png" alt="" width="650" height="300" /></a></li>
+            <li><a href="javascript:void(0);"><img src="images/food/02.png" alt="" width="650" height="300" /></a></li>
+        </ul>
+        <div class="core-middle-square">
+            <span class="current">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+        </div>
+        <!--将两个span放在一个div中 是为了方便管理-->
+        <div class="core-middle-focus"><span>&lt;</span><span id="rightCoreMiddleFocus">&gt;</span></div>
+    </div>
+</div>
+<!--core div end *************************************************************************************************-->
 </body>
 </html>

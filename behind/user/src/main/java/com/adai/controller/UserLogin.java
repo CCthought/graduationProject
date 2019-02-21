@@ -41,13 +41,27 @@ public class UserLogin {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ActionResponse login(String account, String password){
+    public ActionResponse login(String account, String password) {
         System.out.println(account + 'a' + password);
         Integer isAccountExist = userSerivce.login(account, password);
-        if(isAccountExist == 1){
-            return ActionResponse.success();
-        }else{
+        if (isAccountExist == 1) {
+            return ActionResponse.success(account);
+        } else {
             return new ActionResponse<>("498", "用户名密码不正确");
+        }
+    }
+
+
+
+    //删除用户
+    @RequestMapping(value = "/logout", method = RequestMethod.POST, consumes = "application/json")
+    public ActionResponse logout(@RequestBody String account) {
+        String[] split = account.split("=");
+        Integer isDelete = userSerivce.logout(split[1]);
+        if(isDelete == 1){
+            return ActionResponse.success("1");
+        } else {
+            return new ActionResponse<>("498", "删除用户失败");
         }
     }
 }

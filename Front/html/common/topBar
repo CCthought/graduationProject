@@ -3,10 +3,13 @@
         <a style="color: #FF0000">Welcome To Adai Shopping Mall</a>
     </li>
     <li>
-        <a href="\Front\html\login\login.html">您好，请登录</a>
+        <a id='loginStatus' href="\Front\html\login\login.html" style="color:red;">您好，请登录</a>
     </li>
     <li>
-        <a href="\Front\html\login\register.html">免费注册</a>
+        <a id='registerStatus' href="\Front\html\login\register.html">免费注册</a>
+    </li>
+    <li>
+         <a id='logoutStatus' href="javascript:void(0);" style="display: none;" onClick = "logout();">退出登录</a>
     </li>
     <li>
         <a>我的购物车</a>

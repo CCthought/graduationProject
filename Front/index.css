@@ -1,0 +1,142 @@
+/*search div start*/
+.search {
+    border: 1px solid black;
+    width: 1500px;
+    height: 150px;
+    margin: 20px auto;
+}
+
+.search-left {
+    border: 1px solid black;
+    width: 300px;
+    height: 150px;
+    margin-left: 50px;
+    float: left;
+}
+
+.search-middle {
+    border: 1px solid black;
+    width: 600px;
+    height: 150px;
+    margin-left: 100px;
+    float: left;
+}
+
+.search-middle-input {
+    border-color: red;
+    width: 400px;
+    height: 30px;
+    margin-top: 60px;
+    margin-left: 10px;  /*仅仅不让左边框重合*/
+    float: left;
+}
+
+.search-middle-button {
+    width: 60px;
+    height: 40px;
+    font-size: 20px;
+    margin-top: 58px;
+    margin-left: 20px;
+    background-color: #FF8800;
+    float: left;
+}
+.search-middle-button:hover {
+    cursor: pointer;
+}
+/*search div end*/
+
+
+
+/*core div start*/
+.core {
+    border: 1px solid black;
+    width: 1500px;
+    height: 400px;
+    margin: 20px auto;
+}
+
+.core-left {
+    border: 1px solid black;
+    width: 200px;
+    height: 300px;
+    margin-left: 150px;
+    margin-top: 20px;
+    float: left;
+}
+.core-left ul li {
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.core-middle {
+    border: 1px solid black;
+    width: 650px;
+    height: 300px;
+    margin-left: 50px;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+
+.core-middle-ul {
+    width: 1000%;
+    height: 100%;
+    position: absolute;
+}
+.core-middle-ul li{
+    float: left;
+    height: 100%;
+}
+/*小方块*/
+.core-middle-square {
+    top: 270px;
+    left: 200px;
+    position: absolute;
+}
+
+.core-middle-square span {
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+    background-color: white;
+    margin-left: 20px;
+}
+
+.core-middle-square span:hover {
+    cursor: pointer;
+}
+
+.core-middle-square .current {
+    background-color: red;
+}
+
+.core-middle-focus {
+    display: block;
+}
+
+.core-middle-focus span {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -20px;
+    background: #000;
+    cursor: pointer;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: #fff;
+    opacity: 0.3;
+    border: 1px solid #fff;
+}
+
+.core-middle-focus #rightCoreMiddleFocus {
+    right: 5px;
+    left: auto;
+}
+
+/*core div end*/

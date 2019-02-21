@@ -11,22 +11,25 @@
     <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="../../normalize.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="../../css/top/topBar.css"/>
-    <!--因为所有页面都要引入该topBar.html 所以以上属性是公共的-->
-    <!--该页面的 专属css样式-->
-    <link rel="stylesheet" type="text/css" href="../../css/login/login.css"/>
-
-    <!--js-->
-    <script src="../../js/login/login.js" type="text/javascript"></script>
-
-    <!--引入导航栏-->
+    <link rel="stylesheet" type="text/css" href="../../css/common/topBar.css"/>
     <script src="../../js/jquery.js"></script>
+    <script src="../../js/common/topBar.js"></script>
+    <!--引入导航栏-->
     <script type="text/javascript">
         //在js中引入
-        $(document).ready(function () {
+        $(window).ready(function () {
             $('.topBar').load('../common/topBar');
         });
     </script>
+    <!--因为所有页面都要引入该topBar.html 所以以上属性是公共的-->
+
+    <!--该页面的 专属css-->
+    <link rel="stylesheet" type="text/css" href="../../css/login/login.css"/>
+
+    <!--该页面的 专属js-->
+    <script src="../../js/login/login.js" type="text/javascript"></script>
+
+
 </head>
 <body>
 <!--让jQuery引入topBar start-->
