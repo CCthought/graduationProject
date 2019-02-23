@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Adai Shopping Mall, There is all beautiful clothes</title>
+
+    <!--因为所有页面都要引入该topBar.html 所以以下属性是公共的-->
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="../../normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common/topBar.css"/>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/common/topBar.js"></script>
+    <!--引入导航栏-->
+    <script type="text/javascript">
+        //在js中引入
+        $(window).ready(function () {
+            $('.topBar').load('../common/topBar');
+        });
+    </script>
+    <!--因为所有页面都要引入该topBar.html 所以以上属性是公共的-->
+
+    <!--引入该页面专属css-->
+    <link rel="stylesheet" href="../../css/clothes/index.css"/>
+    <!--引入该页面专属JS-->
+    <script type="text/javascript" src="../../js/clothes/index.js"></script>
+</head>
+<body>
+<!--让jQuery引入topBar start-->
+<div class="topBar"></div>
+<!--让jQuery引入topBar end-->
+</body>
+
+<!--说明栏 start ***************************************-->
+<div class="show">
+    <div class="show-picture">
+        <img src="../../images/clothes/index-left.png" alt='picture' width="100%" height="100%"/>
+    </div>
+    <div class="show-picture">
+        <img src="../../images/clothes/index-middle.png" alt='picture' width="100%" height="100%"/>
+    </div>
+    <div class="show-picture">
+        <img src="../../images/clothes/index-right.png" alt='picture' width="100%" height="100%"/>
+    </div>
+    <div class="show-text">
+        Welcome to the Clothing Show
+    </div>
+</div>
+<!--说明栏 end   ***************************************-->
+
+<!--主页面 start ***************************************************************************-->
+<div id="core-clothes" class="core-clothes">
+
+</div>
+<!--主页面 end ***************************************************************************-->
+
+<div style="border: 1px solid black;width: 10px;height: 100px;"></div>
+</html>

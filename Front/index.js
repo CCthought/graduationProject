@@ -16,7 +16,70 @@ function core() {
     let coreMiddleSquare = coreMiddleDiv.children[1];
     // 为span注册鼠标事件 当鼠标移入的时候 背景显示红色
 
+    // core 左边选择栏 start&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    let coreLeftDivUlLis = coreLeftDiv.children[0].children;
+    for (let i = 0; i < coreLeftDivUlLis.length; i++) {
+        coreLeftDivUlLis[i].onmouseover = function () {
+            if (coreLeftDivUlLis[i].id === "clothes-li") {
+                let clothesAbsolute = document.getElementById('clothes-absolute');
+                clothesAbsolute.onmouseover = function () {
+                    clothesAbsolute.style.display = 'block';
+                };
+                clothesAbsolute.onmouseout = function () {
+                    clothesAbsolute.style.display = 'none';
+                };
+                clothesAbsolute.style.display = 'block';
+            } else if (coreLeftDivUlLis[i].id === "food-li") {
+                let clothesAbsolute = document.getElementById('food-absolute');
+                clothesAbsolute.onmouseover = function () {
+                    clothesAbsolute.style.display = 'block';
+                };
+                clothesAbsolute.onmouseout = function () {
+                    clothesAbsolute.style.display = 'none';
+                };
+                clothesAbsolute.style.display = 'block';
+            } else if (coreLeftDivUlLis[i].id === "book-li") {
+                let clothesAbsolute = document.getElementById('book-absolute');
+                clothesAbsolute.onmouseover = function () {
+                    clothesAbsolute.style.display = 'block';
+                };
+                clothesAbsolute.onmouseout = function () {
+                    clothesAbsolute.style.display = 'none';
+                };
+                clothesAbsolute.style.display = 'block';
+            } else {
+                let clothesAbsolute = document.getElementById('poster-absolute');
+                clothesAbsolute.onmouseover = function () {
+                    clothesAbsolute.style.display = 'block';
+                };
+                clothesAbsolute.onmouseout = function () {
+                    clothesAbsolute.style.display = 'none';
+                };
+                clothesAbsolute.style.display = 'block';
+            }
+        };
 
+        coreLeftDivUlLis[i].onmouseout = function () {
+            if (coreLeftDivUlLis[i].id === "clothes-li") {
+                let clothesAbsolute = document.getElementById('clothes-absolute');
+                clothesAbsolute.style.display = 'none';
+            } else if (coreLeftDivUlLis[i].id === "food-li") {
+                let clothesAbsolute = document.getElementById('food-absolute');
+                clothesAbsolute.style.display = 'none';
+            } else if (coreLeftDivUlLis[i].id === "book-li") {
+                let clothesAbsolute = document.getElementById('book-absolute');
+                clothesAbsolute.style.display = 'none';
+            } else {
+                let clothesAbsolute = document.getElementById('poster-absolute');
+                clothesAbsolute.style.display = 'none';
+            }
+        };
+    }
+    // core 左边选择栏 end&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    // core 左边选择栏 end&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    // 轮播图 start&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     let oldIndex = 1; // 标记以前span元素的current样式，为了animate动画的 speed参数考虑
     // 中间div下的square下的span集合
     let coreMiddleSquareSpans = coreMiddleSquare.children;
@@ -39,7 +102,7 @@ function core() {
             } else {
                 animate(coreMiddleDivUl, -(index - 1) * 650, 1);
             }
-            imgInterval = setInterval(leftFocus,5000);
+            imgInterval = setInterval(leftFocus, 5000);
         };
     }
 
@@ -63,13 +126,13 @@ function core() {
                 if (currentIndex === 1) {
                     coreMiddleSquareSpans[i].className = "current";
                     // 处理用户一来  就直接点击最左边的按钮
-                    imgInterval = setInterval(leftFocus,5000);
+                    imgInterval = setInterval(leftFocus, 5000);
                     return false;
                 }
                 coreMiddleSquareSpans[currentIndex - 2].className = "current";
                 // offsetLeft 没有 px单位  为left有px单位
                 animate(coreMiddleDivUl, coreMiddleDivUl.offsetLeft + 650, 20);
-                imgInterval = setInterval(leftFocus,5000);
+                imgInterval = setInterval(leftFocus, 5000);
             };
         }
 
@@ -110,18 +173,18 @@ function core() {
             if (currentIndex === coreMiddleSquareSpans.length) {
                 coreMiddleSquareSpans[coreMiddleSquareSpans.length - 1].className = "current";
                 // 处理用户一来  就直接点击最右边的按钮
-                imgInterval = setInterval(leftFocus,5000);
+                imgInterval = setInterval(leftFocus, 5000);
                 return false;
             }
             coreMiddleSquareSpans[currentIndex].className = "current";
 
             // offsetLeft 没有 px单位  为left有px单位
             animate(coreMiddleDivUl, coreMiddleDivUl.offsetLeft - 650, 20);
-            imgInterval = setInterval(leftFocus,5000);
+            imgInterval = setInterval(leftFocus, 5000);
         }
     }
 
-     let imgInterval = setInterval(leftFocus,5000);
+    let imgInterval = setInterval(leftFocus, 5000);
 
     //设置任意的一个元素,移动到指定的目标位置
     function animate(element, target, speed) {
@@ -147,5 +210,8 @@ function core() {
             }
         }, speed);
     }
+
+    // 轮播图 end&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 }
+
 //core js end *********************************************************************************

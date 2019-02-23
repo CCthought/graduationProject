@@ -42,3 +42,16 @@ text/plain：空格转换为 "+" 加号，但不对特殊字符编码。
 
 
 
+## 3 paging
+
+①
+
+the Front will pass two parameters `Integer pageSize, Integer currentPage`
+
+②
+
+通常，我们Dao和Service 的 method should be one-to-one correspondence,but we use paging,
+
+the situation is different
+
+because 分页在xml中 根本 没有办法 返回 有效的值

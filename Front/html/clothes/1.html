@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>西服套装男士</title>
+
+    <!--因为所有页面都要引入该topBar.html 所以以下属性是公共的-->
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="../../normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common/topBar.css"/>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/common/topBar.js"></script>
+    <!--引入导航栏-->
+    <script type="text/javascript">
+        //在js中引入
+        $(window).ready(function () {
+            $('.topBar').load('../common/topBar');
+        });
+    </script>
+    <!--因为所有页面都要引入该topBar.html 所以以上属性是公共的-->
+
+    <!--引入该页面专属css-->
+    <link rel="stylesheet" href="../../css/clothes/1.css"/>
+    <!--引入该页面专属JS-->
+    <script type="text/javascript" src="../../js/clothes/1.js"></script>
+</head>
+<body>
+<!--让jQuery引入topBar start-->
+<div class="topBar"></div>
+<!--让jQuery引入topBar end-->
+
+<div class="message">
+    <div id="message-picture" class="message-picture"></div>
+
+    <div class="message-clothes">
+        <div id="message-clothes-name">
+            12312
+        </div>
+
+        <div id="message-clothes-price">
+            <ul style="line-height: 40px;">
+                <li class="message-clothes-price-li">原价:&nbsp;&nbsp;&nbsp;<del id="message-clothes-price-li-del">123
+                </del>
+                </li>
+                <li class="message-clothes-price-li">折扣价:&nbsp;&nbsp;&nbsp;<span id="message-clothes-price-li-span"
+                                                                                 style="color: red;">123</span></li>
+            </ul>
+        </div>
+
+        <div id="message-clothes-saledCommentsLocation">
+            <ul>
+                <li class="saledCommentsLocation-li">总销量:<span id="saledSpan" style="color: red;">123</span></li>
+                <li class="saledCommentsLocation-li">累计评价:<span id="commentsSpan" style="color: red;">123</span></li>
+                <li class="saledCommentsLocation-li">地点:<span id="locationSpan" style="color: red;">123</span></li>
+            </ul>
+        </div>
+
+        <div id="message-clothes-color">
+            <ul>
+                <li class="message-clothes-color-li">颜色</li>
+                <li class="message-clothes-color-li">a</li>
+                <li class="message-clothes-color-li">3</li>
+            </ul>
+        </div>
+
+        <div id="message-clothes-size">
+            <ul>
+                <li class="message-clothes-size-li">size&nbsp;</li>
+                <li class="message-clothes-size-li">a</li>
+                <li class="message-clothes-size-li">3</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

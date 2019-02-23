@@ -31,7 +31,6 @@ public class UserLogin {
 
     @RequestMapping(value = "/isUniqueAccount", method = RequestMethod.GET)
     private ActionResponse isUniqueAccount(String account) {
-        System.err.println(account);
         String uniqueAccount = userSerivce.isUniqueAccount(account);
         if (uniqueAccount == null) {
             return ActionResponse.success();

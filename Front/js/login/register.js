@@ -60,7 +60,7 @@ window.onload = function () {
             }
 
             $.ajax({
-                async: false,
+                async: true,
                 type: "GET",
                 dataType: "json",
                 contentType : "application/x-www-form-urlencoded; charset=utf-8",

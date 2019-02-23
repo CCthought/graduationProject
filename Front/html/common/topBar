@@ -1,6 +1,6 @@
 <ul>
     <li>
-        <a style="color: #FF0000">Welcome To Adai Shopping Mall</a>
+        <a href="\Front\index.html" style="color: #FF0000">Welcome To Adai Shopping Mall</a>
     </li>
     <li>
         <a id='loginStatus' href="\Front\html\login\login.html" style="color:red;">您好，请登录</a>
