@@ -35,41 +35,59 @@
 
     <div class="message-clothes">
         <div id="message-clothes-name">
-            12312
+
         </div>
 
         <div id="message-clothes-price">
             <ul style="line-height: 40px;">
-                <li class="message-clothes-price-li">原价:&nbsp;&nbsp;&nbsp;<del id="message-clothes-price-li-del">123
+                <li class="message-clothes-price-li">原价:&nbsp;&nbsp;&nbsp;<del id="message-clothes-price-li-del">
                 </del>
                 </li>
                 <li class="message-clothes-price-li">折扣价:&nbsp;&nbsp;&nbsp;<span id="message-clothes-price-li-span"
-                                                                                 style="color: red;">123</span></li>
+                                                                                 style="color: red;"></span></li>
             </ul>
         </div>
 
         <div id="message-clothes-saledCommentsLocation">
             <ul>
-                <li class="saledCommentsLocation-li">总销量:<span id="saledSpan" style="color: red;">123</span></li>
-                <li class="saledCommentsLocation-li">累计评价:<span id="commentsSpan" style="color: red;">123</span></li>
-                <li class="saledCommentsLocation-li">地点:<span id="locationSpan" style="color: red;">123</span></li>
+                <li class="saledCommentsLocation-li">总销量:<span id="saledSpan" style="color: red;"></span></li>
+                <li class="saledCommentsLocation-li">累计评价:<span id="commentsSpan" style="color: red;"></span></li>
+                <li class="saledCommentsLocation-li">地点:<span id="locationSpan" style="color: red;"></span></li>
             </ul>
         </div>
 
         <div id="message-clothes-color">
-            <ul>
-                <li class="message-clothes-color-li">颜色</li>
-                <li class="message-clothes-color-li">a</li>
-                <li class="message-clothes-color-li">3</li>
+            <ul id="message-clothes-color-ul">
+                <li class="message-clothes-color-li" style="border: 1px;">颜色</li>
             </ul>
         </div>
 
         <div id="message-clothes-size">
-            <ul>
-                <li class="message-clothes-size-li">size&nbsp;</li>
-                <li class="message-clothes-size-li">a</li>
-                <li class="message-clothes-size-li">3</li>
+            <ul id="message-clothes-size-ul">
+                <li class="message-clothes-size-li" style="border: 1px;">size&nbsp;</li>
             </ul>
+        </div>
+
+        <div id="message-clothes-number">
+            <ul>
+                <li class="message-clothes-number-li">数量</li>
+                <li class="message-clothes-number-li">
+                    <label>
+                        <input id="numberLi" type="text"  name="numberLi" maxlength="3" style="width: 40px" value="1"/>
+                    </label>
+                </li>
+                <li id="plus" class="message-clothes-number-li"  onmouseover="this.style.cursor = 'pointer'">+</li>
+                <li id="minus" class="message-clothes-number-li" onmouseover="this.style.cursor = 'pointer'" style="font-size: 30px; margin-top: 2px;">-</li>
+            </ul>
+        </div>
+
+        <div id="message-clothes-buyAndCart">
+            <div class="message-clothes-buyAndCart" style="background-color: rgb(255,237,237);color: red; ">
+                立即购买
+            </div>
+            <div class="message-clothes-buyAndCart" style="background-color: rgb(255,0,54); color: white;">
+                加入购物车
+            </div>
         </div>
     </div>
 </div>
