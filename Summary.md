@@ -55,3 +55,16 @@ the Front will pass two parameters `Integer pageSize, Integer currentPage`
 the situation is different
 
 because 分页在xml中 根本 没有办法 返回 有效的值
+
+
+
+## 4 Json
+
+`{"name":"adaiadaiadai","account": "abc"}` right
+
+`{'name':"adaiadaiadai",'account': "abc"}`error
+
+we must use `""` instead of `''` in Json
+
+
+

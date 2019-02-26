@@ -136,3 +136,88 @@
     margin-left: 120px;
     margin-top: 10px;
 }
+
+/*评论 */
+#comments {
+    border: 1px solid black;
+    width: 1500px;
+    height: auto;
+    margin: 20px auto;
+}
+
+#myComments {
+    border: 1px solid black;
+    width: 1500px;
+    height: 300px;
+    margin: 20px auto;
+}
+
+#myComments li:first-child {
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    float: left;
+    margin-left: 300px;
+    margin-top: 20px;
+}
+
+#myComments li:last-child {
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.commentOneByOne {
+    border: 1px solid black;
+    width: 900px;
+    height: 100px;
+    margin: 20px auto;
+}
+
+#comment-account {
+    border: 1px solid black;
+    width: 100px;
+    margin-top: 1px;
+    margin-left: 1px;
+    margin-right: 20px;
+    float: left;
+}
+
+#comment-time {
+    border: 1px solid black;
+    width: 200px;
+    height: 20px;
+    margin-top: 70px;
+    margin-left: 20px;
+    float: left;
+}
+
+#comment-text {
+    display: block;
+    float: left;
+    resize: none;
+}
+
+
+/*分页专属class*/
+.pageTurning {
+    border: 1px solid black;
+    width: 250px;
+    height: 50px;
+    margin: auto;
+    clear: both;
+}
+
+.pageTurningSquare {
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    margin-top: 30px;
+    text-align: center;
+    line-height: 20px;
+    float: left;
+}
+
+.current {
+    background-color: red;
+}

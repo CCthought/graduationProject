@@ -10,8 +10,11 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>user</module>
-        <module>clothes</module>
+        <module>items</module>
         <module>common</module>
+        <module>cart</module>
+        <module>order</module>
+        <module>comments</module>
     </modules>
 
     <parent>

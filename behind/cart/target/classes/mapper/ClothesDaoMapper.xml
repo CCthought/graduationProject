@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adai.dao.CartDao">
+
+    <sql id="Table_cart">
+         cart
+    </sql>
+
+    <sql id="Table_column">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            itemId,category,`name`,price,color,`size`,location,`count`,imgPath,account,
+        </trim>
+    </sql>
+
+    <sql id="Column_ALL_Values">
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            #{itemId},#{category},#{name},#{price},#{color},#{size},#{location},#{count},#{imgPath}, #{account}
+        </trim>
+    </sql>
+
+    <insert id="insertCart" parameterType="com.adai.entity.Cart">
+        insert into
+        <include refid="Table_cart"/>
+        <include refid="Table_column"/>
+        <include refid="Column_ALL_Values"/>
+    </insert>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adai.dao.CommentsDao">
+
+    <sql id="Table_comments">
+        comments
+    </sql>
+
+    <sql id="Table_column">
+      id,itemId,category,message,account,commentTime
+    </sql>
+
+    <select id="getCountsComments" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        select count(*) from
+        <include refid="Table_comments"/>
+        where itemId = #{param1} and category = #{param2}
+    </select>
+
+    <select id="getPageCommentsItems" resultType="com.adai.vo.reponse.PageComments">
+        SELECT
+        <include refid="Table_column"/>
+        FROM
+        <include refid="Table_comments"/>
+        WHERE itemId = #{itemId} and category = #{category}
+        LIMIT #{pageSize} offset #{offset}
+    </select>
+</mapper>

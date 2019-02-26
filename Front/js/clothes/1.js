@@ -1,12 +1,24 @@
 window.onload = function () {
-    let href = window.location.href;
-    let temp = href.lastIndexOf('?');
-    // 拿到地址栏的id
-    let id = Number.parseInt(href.substring(temp + 4, href.length));
-    getUniqueClothes(id);
+    initializeTopbar();
+    let id = GetQueryString("id");
+    let category = GetQueryString("category");
+    getUniqueClothes(id, category);
+    getComments(id, category, 1, 5);
 };
 
-function getUniqueClothes(id) {
+// 获取地址栏 参数
+/**
+ * @return {string}
+ */
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null)
+        return unescape(r[2]);
+    return null;
+}
+
+function getUniqueClothes(id, category) {
     $.ajax({
         async: true,
         type: "GET",
@@ -21,7 +33,8 @@ function getUniqueClothes(id) {
                 document.getElementById('message-clothes-price-li-del').innerHTML = result.body.price;
                 document.getElementById('message-clothes-price-li-span').innerHTML = result.body.discount;
                 document.getElementById('saledSpan').innerHTML = result.body.saled;
-                document.getElementById('commentsSpan').innerHTML = result.body.comments;
+                // 获取所有评论 因为评论和items是不同项目，所以要通过另一个ajax去获取所有的评论
+                getCountsComments(id, category, document.getElementById('commentsSpan'));
                 document.getElementById('locationSpan').innerHTML = result.body.location;
                 let colorUl = document.getElementById('message-clothes-color-ul');
                 for (let i = 0; i < result.body.color.length; i++) {
@@ -32,6 +45,10 @@ function getUniqueClothes(id) {
                     $(sizeUl).append(` <li class="message-clothes-size-li">${result.body.size[i]}</li>`);
                 }
 
+                //为提交购物车 做准备
+                let color = "";
+                let size = "";
+
                 // 为颜色 注册点击事件
                 let colorLi = document.getElementById('message-clothes-color-ul').children;
                 for (let i = 1; i < colorLi.length; i++) {
@@ -39,6 +56,7 @@ function getUniqueClothes(id) {
                         for (let i = 1; i < colorLi.length; i++) {
                             colorLi[i].style.backgroundColor = "#DDDDDD";
                         }
+                        color = this.innerHTML;
                         this.style.backgroundColor = "red";
                     };
                 }
@@ -49,6 +67,7 @@ function getUniqueClothes(id) {
                         for (let i = 1; i < sizeLi.length; i++) {
                             sizeLi[i].style.backgroundColor = "#DDDDDD";
                         }
+                        size = this.innerHTML;
                         this.style.backgroundColor = "red";
                     };
                 }
@@ -83,14 +102,14 @@ function getUniqueClothes(id) {
 
                 // plus +
                 document.getElementById('plus').onclick = function () {
-                   let oldValue =  document.getElementById('numberLi').value;
+                    let oldValue = document.getElementById('numberLi').value;
                     document.getElementById('numberLi').value = Number.parseInt(oldValue) + 1;
                 };
 
                 // minus -
                 document.getElementById('minus').onclick = function () {
-                    let oldValue =  document.getElementById('numberLi').value;
-                    if(Number.parseInt(oldValue) === 1){
+                    let oldValue = document.getElementById('numberLi').value;
+                    if (Number.parseInt(oldValue) === 1) {
                         return;
                     }
                     document.getElementById('numberLi').value = Number.parseInt(oldValue) - 1;
@@ -111,7 +130,21 @@ function getUniqueClothes(id) {
                         }
                     }
                     if (colorFlag === true && sizeFlag === true) {
-                        alert('abc');
+                        //  添加购物车
+                        if (getCookie('account') !== "") {
+                            let name = result.body.name;
+                            let price = result.body.discount;
+                            let location = result.body.location;
+                            let account = getCookie('account');
+                            let count = document.getElementById("numberLi").value;
+                            let imgPath = "clothes/" + result.body.imgPath;
+                            let itemId = result.body.id;
+                            let category = result.body.category;
+                            addCart(name, price, location, account, count, imgPath, itemId, category, color, size);
+                        } else {
+                            alert('亲爱的用户，请先登陆');
+                            window.location.href = "../../html/login/login.html"
+                        }
                     } else if (colorFlag === false) {
                         alert('亲爱的用户，请选择一个颜色');
                     } else if (sizeFlag === false) {
@@ -127,5 +160,133 @@ function getUniqueClothes(id) {
             alert("异常！");
         }
     });
+}
 
+// 获取评论信息
+function getCountsComments(id, category, domId) {
+    $.ajax({
+        async: true,
+        type: "GET",
+        dataType: "json",
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        url: "http://localhost:8083/getCountsComments",
+        data: `itemId=${id}&category=${category}`,
+        success: function (result) {
+            domId.innerHTML = result.body;
+        },
+        error: function () {
+            alert("异常！");
+        }
+    });
+}
+
+// 获取所有的评论 List<Comment>
+function getComments(id, category, currentPage, pageSize) {
+    $('#comments').empty();
+    $.ajax({
+        async: true,
+        type: "GET",
+        dataType: "json",
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        url: "http://localhost:8083/getPageComments",
+        data: `itemId=${id}&category=${category}&currentPage=${currentPage}&pageSize=${pageSize}`,
+        success: function (result) {
+            if (result.body.items.length > 0) {
+                let commentAccount = document.getElementById("comments");
+                for (let i = 0; i < result.body.items.length; i++) {
+                    $(commentAccount).append(`<div class="commentOneByOne">
+                    <div id="comment-account">${result.body.items[i].account}</div>
+                    <textarea id="comment-text" rows="5" cols="60" readonly="readonly">${result.body.items[i].message}</textarea>
+                    <div id="comment-time">${result.body.items[i].strCommentTime}</div></div>`);
+                }
+                let domId = document.getElementById("comments");
+                spanSquare(id, category, currentPage, pageSize, domId, result);
+            }
+        },
+        error: function () {
+            alert("异常！");
+        }
+    });
+}
+
+// 购物车
+function addCart(name, price, location, account, count, imgPath, itemId, category, color, size) {
+    $.ajax({
+        async: true,
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        url: "http://localhost:8082/insertCart",
+        data: JSON.stringify({
+            name: name,
+            price: price,
+            location: location,
+            color: color.trim(),
+            size: Number.parseInt(size.trim()),
+            count: count,
+            account: account,
+            itemId: itemId,
+            imgPath: imgPath,
+            category: category
+        }),
+        success: function (result) {
+            alert("加入购物车 成功");
+        },
+        error: function () {
+            alert("异常！");
+        }
+    });
+}
+
+// 渲染翻页小方块
+function spanSquare(id, category, currentPage, pageSize, domId, result) {
+    // 增加<  >小方块
+    $(domId).append('<div class="pageTurning"><div id="pageTurningSquareFront" class="pageTurningSquare">&lt;</div>' +
+        '' +
+        '<div class="pageTurningSquare" id="pageTurningSquareLatter">&gt;</div></div>'
+    );
+    // 增加1,2,3 ... 小方块
+    let pageTurningSquareLatter = document.getElementById("pageTurningSquareLatter");
+    for (let i = 0; i < Math.ceil(result.body.totalRecords / pageSize); i++) {
+        $(pageTurningSquareLatter).before(`<div class="pageTurningSquare">${i + 1}</div>`);
+    }
+
+    // 说明是第一页
+    let pageTurningSquare = $(".pageTurningSquare");
+    pageTurningSquare[0].onclick = function () {
+        if (currentPage === 1) {
+            return false;
+        } else {
+            getComments(id, category, currentPage - 1, pageSize)
+        }
+    };
+    // 说明是最后一页
+    pageTurningSquare[pageTurningSquare.length - 1].onclick = function () {
+        if (currentPage === pageTurningSquare.length - 2) {
+            return false;
+        } else {
+            getComments(id, category, currentPage + 1, pageSize,);
+        }
+    };
+    //  为1,2,3 ... 小方块 注册点击事件
+    for (let i = 1; i < pageTurningSquare.length - 1; i++) {
+        pageTurningSquare[i].onclick = function () {
+            getComments(id, category, i, pageSize,);
+        }
+    }
+    // 为1，2，3 ... 注册专属CSS样式  current
+    pageTurningSquare[currentPage].className = "pageTurningSquare current";
+
+    // 为 < > 小方块注册 鼠标移入 禁止状态
+    document.getElementById("pageTurningSquareFront").onmouseover = function () {
+        if (currentPage === 1) {
+            this.style.cursor = "not-allowed";
+        }
+    };
+
+    pageTurningSquareLatter.onmouseover = function () {
+        if (currentPage === pageTurningSquare.length - 2) {
+            this.style.cursor = "not-allowed";
+        }
+    }
 }

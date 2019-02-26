@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adai.dao.ClothesDao">
+
+    <sql id="Table_clothes">
+        clothes
+    </sql>
+
+    <select id="selectAllCounts" resultType="java.lang.Integer">
+        select count(*) from
+        <include refid="Table_clothes"/>
+    </select>
+
+    <select id="getPageListIndexClothes" parameterType="int"
+            resultType="com.adai.vo.reponse.IndexClothesResponse">
+        select id,category, `name`,price,discount,saled,imgPath from
+        <include refid="Table_clothes"/>
+        LIMIT #{param1} OFFSET #{param2}
+    </select>
+
+    <select id="getUniqueClothes" parameterType="int" resultType="com.adai.vo.reponse.UniqueClothes">
+        select id,category,`name`,price,discount,saled,color as colorTemp,`size` as sizeTemp,imgPath,location from
+        <include refid="Table_clothes"/>
+        where id = #{id}
+    </select>
+
+</mapper>
