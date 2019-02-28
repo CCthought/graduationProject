@@ -75,6 +75,12 @@ public class CartController {
     @RequestMapping(value = "/selectCartById", method = RequestMethod.GET)
     public ActionResponse selectCartById(Integer id){
         List<CartResponse> cartResponse = cartService.selectCartById(id);
-        return ActionResponse.success(cartResponse);
+        PageResult pageResult = new PageResult<>(5, 1, 1, cartResponse);
+        return ActionResponse.success(pageResult);
+    }
+
+    @RequestMapping(value = "/getAllMoney", method = RequestMethod.GET)
+    public ActionResponse getAllMoney(String account){
+        return ActionResponse.success(cartService.getAllMoney(account));
     }
 }

@@ -33,8 +33,39 @@
 <div class="topBar"></div>
 <!--让jQuery引入topBar end-->
 
-<div id="confirmOrder">
+<div id="cart">
 
+</div>
+
+<div id="order">
+    <div class="order">
+        收货地址：&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="order-address">
+            <input id="order-address" maxlength="100px" style="width: 1000px;"/>
+        </label>
+        <div id="order-address-Tips" style="color: red; display: none;font-size: 25px">收货地址不能为空！！！</div>
+    </div>
+    <div class="order">
+        收货人姓名：
+        <label for="order-receiver">
+            <input id="order-receiver" maxlength="100px" style="width: 1000px;"/>
+        </label>
+        <div id="order-receiver-Tips" style="color: red; display: none;font-size: 25px">收货人姓名不能为空！！！</div>
+    </div>
+    <div class="order">
+        联系人电话：
+        <label for="order-phone">
+            <input id="order-phone" maxlength="100px" style="width: 1000px;"/>
+        </label>
+        <div id="order-phone-Tips" style="color: red; display: none;font-size: 25px">联系人电话不能为空！！！</div>
+    </div>
+    <div id="order-commit">
+        <div id="order-commit-money">实付款:￥<span id="order-span-money" style="color: red"></span></div>
+        <div id="order-commit-address">邮寄至:<span id="order-span-address"></span></div>
+        <div id="order-commit-receiverAndMoney">收货人:<span id="order-span-receiver"></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系电话:<span id="order-span-phone"></span></div>
+        <div id="order-commit-reallyCommit" onmouseover="this.style.cursor = 'pointer'">提交订单</div>
+    </div>
 </div>
 
 </body>

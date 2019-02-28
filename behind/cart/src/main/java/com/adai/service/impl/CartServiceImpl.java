@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * author Adai
@@ -22,8 +24,15 @@ public class CartServiceImpl implements ICartService {
 
     @Override
     public Integer insertCart(InsertCartRequest cart) {
-        // 1 代表数据库已经有这个购物车相关信息了 0 代表没有
-        Integer isExist = this.isExistCart(cart.getItemId(),cart.getColor(),cart.getSize());
+        Integer isExist;
+        // 判断购物车属于那个类别 是否有 color size
+        if (cart.getCount() == null && cart.getSize() == null) {
+            // 1 代表数据库已经有这个购物车相关信息了 0 代表没有
+            isExist = this.isExistCartHasColorSize(cart.getItemId(), cart.getColor(), cart.getSize());
+        } else {
+            // 1 代表数据库已经有这个购物车相关信息了 0 代表没有
+            isExist = this.isExistCartNoColorSize(cart.getItemId());
+        }
         if (isExist == 0) {
             return cartDao.insertCart(cart);
         } else {
@@ -54,18 +63,23 @@ public class CartServiceImpl implements ICartService {
     }
 
     @Override
-    public Integer isExistCart(Integer itemId,String color, Integer size) {
-        return cartDao.isExistCart(itemId, color, size);
+    public Integer isExistCartHasColorSize(Integer itemId, String color, Integer size) {
+        return cartDao.isExistCartHasColorSize(itemId, color, size);
+    }
+
+    @Override
+    public Integer isExistCartNoColorSize(Integer itemId) {
+        return cartDao.isExistCartNoColorSize(itemId);
     }
 
     @Override
     public Integer plusCounts(Integer itemId, Integer count) {
-        return cartDao.plusCounts(itemId,count);
+        return cartDao.plusCounts(itemId, count);
     }
 
     @Override
     public Integer changeCount(Integer id, Integer count) {
-        return cartDao.changeCount(id,count);
+        return cartDao.changeCount(id, count);
     }
 
     @Override
@@ -76,5 +90,29 @@ public class CartServiceImpl implements ICartService {
     @Override
     public Integer removeAllCarts(String account) {
         return cartDao.removeAllCarts(account);
+    }
+
+    @Override
+    public Integer getAllMoney(String account) {
+        Integer totalMoney = 0;
+        Integer price = -1;
+        Integer count = -1;
+        List<Map<String, Integer>> allMoney = cartDao.getAllMoney(account);
+        for (Map<String, Integer> map : allMoney) {
+            for (Map.Entry<String, Integer> entey : map.entrySet()) {
+                String key = entey.getKey();
+                if ("price".equals(key)) {
+                    price = entey.getValue();
+                }else {
+                    count = entey.getValue();
+                }
+                if (price != -1 && count != -1) {
+                    totalMoney = totalMoney + (price * count);
+                    price = -1;
+                    count = -1;
+                }
+            }
+        }
+        return totalMoney;
     }
 }

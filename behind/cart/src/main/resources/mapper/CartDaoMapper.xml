@@ -49,50 +49,68 @@
     <select id="getPageListCarts"
             resultType="com.adai.vo.response.CartResponse">
         select id,itemId,category,`name`,price,`count`,imgPath,color,`size`,location
-        from <include refid="Table_cart" />
+        from
+        <include refid="Table_cart"/>
         WHERE account = #{param3}
         limit #{param1} offset #{param2}
     </select>
 
     <select id="selectCartCounts" parameterType="java.lang.String" resultType="java.lang.Integer">
         select count(*) FROM
-        <include refid="Table_cart" />
+        <include refid="Table_cart"/>
         where account = #{account}
     </select>
 
-    <select id="isExistCart" resultType="java.lang.Integer">
+    <select id="isExistCartHasColorSize" resultType="java.lang.Integer">
         select count(*) FROM
-        <include refid="Table_cart" />
+        <include refid="Table_cart"/>
         where itemId = #{param1} and color = #{param2} and `size` = #{param3}
     </select>
+
+    <select id="isExistCartNoColorSize" parameterType="java.lang.Integer"
+            resultType="java.lang.Integer">
+        select count(*) FROM
+        <include refid="Table_cart"/>
+        where itemId = #{itemId}
+    </select>
+
     <select id="selectCartById" parameterType="java.lang.Integer"
             resultType="com.adai.vo.response.CartResponse">
-       select id,itemId,category,`name`,price,`count`,imgPath,color,`size`,location
-        from <include refid="Table_cart" />
+        select id,itemId,category,`name`,price,`count`,imgPath,color,`size`,location
+        from
+        <include refid="Table_cart"/>
         WHERE id = #{id}
+    </select>
+
+    <select id="getAllMoney" parameterType="java.lang.String" resultType="java.util.Map">
+        select `count`,price from
+        <include refid="Table_cart"/>
+        where account = #{account}
     </select>
 
     <update id="plusCounts">
         update
-        <include refid="Table_cart" />
+        <include refid="Table_cart"/>
         set `count` = `count` + #{param2}
         where itemId = #{param1}
     </update>
 
     <update id="changeCount">
         UPDATE
-        <include refid="Table_cart" />
+        <include refid="Table_cart"/>
         set `count` = #{param2}
         where id = #{param1}
     </update>
 
     <delete id="deleteCartById">
-        delete from <include refid="Table_cart" />
+        delete from
+        <include refid="Table_cart"/>
         where id = #{id}
     </delete>
 
     <delete id="removeAllCarts">
-        delete from <include refid="Table_cart" />
+        delete from
+        <include refid="Table_cart"/>
         where account = #{account}
     </delete>
 </mapper>
