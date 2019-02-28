@@ -16,6 +16,7 @@ public class Cart {
     private Integer count;
     private String imgPath;
     private String account;
+    private String description;
 
     @Override
     public String toString() {
@@ -31,6 +32,7 @@ public class Cart {
                 ", count=" + count +
                 ", imgPath='" + imgPath + '\'' +
                 ", account='" + account + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 
@@ -122,11 +124,19 @@ public class Cart {
         this.account = account;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Cart() {
 
     }
 
-    public Cart(Integer id, Integer itemId, Integer category, String name, Integer price, String color, Integer size, String location, Integer count, String imgPath, String account) {
+    public Cart(Integer id, Integer itemId, Integer category, String name, Integer price, String color, Integer size, String location, Integer count, String imgPath, String account, String description) {
 
         this.id = id;
         this.itemId = itemId;
@@ -139,5 +149,6 @@ public class Cart {
         this.count = count;
         this.imgPath = imgPath;
         this.account = account;
+        this.description = description;
     }
 }

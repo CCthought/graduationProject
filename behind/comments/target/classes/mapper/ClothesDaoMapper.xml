@@ -10,13 +10,14 @@
       id,itemId,category,message,account,commentTime
     </sql>
 
-    <select id="getCountsComments" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    <select id="getCountsComments" resultType="java.lang.Integer">
         select count(*) from
         <include refid="Table_comments"/>
         where itemId = #{param1} and category = #{param2}
     </select>
 
-    <select id="getPageCommentsItems" resultType="com.adai.vo.reponse.PageComments">
+    <select id="getPageCommentsItems" parameterType="com.adai.vo.request.CommentsPageRequest"
+            resultType="com.adai.vo.reponse.PageComments">
         SELECT
         <include refid="Table_column"/>
         FROM
@@ -24,4 +25,12 @@
         WHERE itemId = #{itemId} and category = #{category}
         LIMIT #{pageSize} offset #{offset}
     </select>
+
+    <insert id="addComment" parameterType="com.adai.vo.request.AddCommentRequest">
+        INSERT  INTO
+        <include refid="Table_comments" />
+        (itemId,category,message,account,commentTime)
+        VALUES (#{itemId},#{category},#{message},#{account},#{commentTime})
+
+    </insert>
 </mapper>

@@ -21,6 +21,8 @@ function clearCookie(name) {
     setCookie(name, "", -1);
 }
 // 当点击退出登陆时，执行该方法
+// 该方法在代码块中会被使用
+// <a id='logoutStatus' href="javascript:void(0);" style="display: none;" onClick = "logout();">退出登录</a>
 function logout() {
     clearCookie('account');
     window.location.href = '\\Front\\html\\login\\login.html';
@@ -40,4 +42,29 @@ function initializeTopbar() {
         logout.style.color = 'black';
         logout.style.display = 'block';
     }
+}
+
+// 点击购物车的时候 判断用户登陆没有
+function isLoginWhenClickCart(){
+    this.onclick = function(){
+        if(getCookie('account') === ''){
+            alert('亲爱的用户，请先登陆');
+            window.location.href = "/Front/html/login/login.html";
+        } else{
+            window.location.href = "/Front/html/cart/index.html";
+        }
+        return false;
+    }
+}
+
+// 获取地址栏 参数
+/**
+ * @return {string}
+ */
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null)
+        return unescape(r[2]);
+    return null;
 }

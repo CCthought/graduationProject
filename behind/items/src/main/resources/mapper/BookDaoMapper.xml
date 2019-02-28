@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adai.dao.BookDao">
+
+    <sql id="Table_book">
+        items
+    </sql>
+
+    <select id="selectBookCounts" resultType="java.lang.Integer">
+        select count(*) from
+        <include refid="Table_book"/> where category = 3
+    </select>
+
+    <select id="getPageListIndexBook" parameterType="java.lang.Integer"
+            resultType="com.adai.vo.response.book.IndexBookResponse">
+        select id,category, `name`,price,discount,saled,imgPath from
+        <include refid="Table_book"/>
+        where category = 3
+        LIMIT #{param1} OFFSET #{param2}
+    </select>
+
+    <select id="getUniqueBook" parameterType="java.lang.Integer" resultType="com.adai.vo.response.book.UniqueBook">
+        select id,category,`name`,price,discount,saled,imgPath,location,description from
+        <include refid="Table_book"/>
+        where id = #{id} and category = 3
+    </select>
+
+</mapper>

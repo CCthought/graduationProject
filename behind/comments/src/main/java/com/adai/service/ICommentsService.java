@@ -3,6 +3,7 @@ package com.adai.service;
 import com.adai.entity.Comment;
 import com.adai.utils.PageResult;
 import com.adai.vo.reponse.PageComments;
+import com.adai.vo.request.AddCommentRequest;
 import com.adai.vo.request.CommentsPageRequest;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface ICommentsService {
     PageResult<PageComments> getPageComments(CommentsPageRequest pageRequest);
 
     Integer getCountsComments(Integer itemId, Integer category);
+
+    Integer addComment(AddCommentRequest addComment);
 }

@@ -3,25 +3,26 @@
 <mapper namespace="com.adai.dao.ClothesDao">
 
     <sql id="Table_clothes">
-        clothes
+        items
     </sql>
 
-    <select id="selectAllCounts" resultType="java.lang.Integer">
+    <select id="selectClothesCounts" resultType="java.lang.Integer">
         select count(*) from
-        <include refid="Table_clothes"/>
+        <include refid="Table_clothes"/> where category = 1
     </select>
 
     <select id="getPageListIndexClothes" parameterType="int"
-            resultType="com.adai.vo.reponse.IndexClothesResponse">
+            resultType="com.adai.vo.response.clothes.IndexClothesResponse">
         select id,category, `name`,price,discount,saled,imgPath from
         <include refid="Table_clothes"/>
+        where category = 1
         LIMIT #{param1} OFFSET #{param2}
     </select>
 
-    <select id="getUniqueClothes" parameterType="int" resultType="com.adai.vo.reponse.UniqueClothes">
+    <select id="getUniqueClothes" parameterType="int" resultType="com.adai.vo.response.clothes.UniqueClothes">
         select id,category,`name`,price,discount,saled,color as colorTemp,`size` as sizeTemp,imgPath,location from
         <include refid="Table_clothes"/>
-        where id = #{id}
+        where id = #{id} and category = 1
     </select>
 
 </mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adai.dao.TrousersDao">
+
+    <sql id="Table_trousers">
+        items
+    </sql>
+
+    <select id="selectTrousersCounts" resultType="java.lang.Integer">
+        select count(*) from
+        <include refid="Table_trousers"/> where category = 4
+    </select>
+
+    <select id="getPageListIndexTrousers" parameterType="int"
+            resultType="com.adai.vo.response.trousers.IndexTrousersResponse">
+        select id,category, `name`,price,discount,saled,imgPath from
+        <include refid="Table_trousers"/>
+        where category = 4
+        LIMIT #{param1} OFFSET #{param2}
+    </select>
+
+    <select id="getUniqueTrousers" parameterType="int" resultType="com.adai.vo.response.trousers.UniqueTrousers">
+        select id,category,`name`,price,discount,saled,color as colorTemp,`size` as sizeTemp,imgPath,location from
+        <include refid="Table_trousers"/>
+        where id = #{id} and category = 4
+    </select>
+
+</mapper>

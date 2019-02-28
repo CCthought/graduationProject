@@ -68,3 +68,22 @@ we must use `""` instead of `''` in Json
 
 
 
+## 5 the return of mybatis sql
+
+select : resultTpy resultMap
+
+update,delete,insert: 
+
+​		success: 1
+
+​		failure: 0
+
+​		exception: throw some relative exceptions
+
+```
+如果删有外键约束的会报错
+ `FK_test` FOREIGN KEY (`name`) REFERENCES `t_user` (`name`)
+ 
+ this blog：https://blog.csdn.net/qq_24691413/article/details/83895574
+```
+

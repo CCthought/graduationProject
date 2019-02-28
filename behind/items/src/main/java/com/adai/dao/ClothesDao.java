@@ -1,8 +1,7 @@
 package com.adai.dao;
 
-import com.adai.utils.PageResult;
-import com.adai.vo.reponse.IndexClothesResponse;
-import com.adai.vo.reponse.UniqueClothes;
+import com.adai.vo.response.clothes.IndexClothesResponse;
+import com.adai.vo.response.clothes.UniqueClothes;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ public interface ClothesDao {
      * 查询数量
      * @return .
      */
-    Integer selectAllCounts();
+    Integer selectClothesCounts();
 
     /**
      *

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+
+    <!--因为所有页面都要引入该topBar.html 所以以下属性是公共的-->
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="../../normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common/topBar.css"/>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/common/topBar.js"></script>
+    <!--引入导航栏-->
+    <script type="text/javascript">
+        //在js中引入
+        $(window).ready(function () {
+            $('.topBar').load('../common/topBar');
+        });
+    </script>
+    <!--因为所有页面都要引入该topBar.html 所以以上属性是公共的-->
+
+    <!--该页面专属css-->
+    <link rel="stylesheet" type="text/css" href="../../css/cart/index.css" />
+
+    <!--该页面专属JS-->
+    <script src="../../js/cart/index.js"></script>
+</head>
+<body>
+<!--让jQuery引入topBar start-->
+<div class="topBar"></div>
+<!--让jQuery引入topBar end-->
+
+<div id="cart">
+    <!--<div class="cart-header">-->
+        <!--<span style="margin-left: 180px;font-size: 25px;">商品信息</span>-->
+        <!--<span style="margin-left: 210px;font-size: 25px;">单价</span>-->
+        <!--<span style="margin-left: 120px;font-size: 25px;">数量</span>-->
+        <!--<span style="margin-left: 200px;font-size: 25px;">价格</span>-->
+        <!--<span style="margin-left: 200px;font-size: 25px;">相关操作</span>-->
+    <!--</div>-->
+    <!--<div class="cart-message">-->
+        <!--<div class="cart-message-img"></div>-->
+        <!--<div class="cart-message-name">善良 思想</div>-->
+        <!--<div class="cart-message-price">1200</div>-->
+        <!--<div class="cart-message-number">-->
+            <!--<ul>-->
+                <!--<li class="cart-message-number-li">数量</li>-->
+                <!--<li class="cart-message-number-li">-->
+                    <!--<label>-->
+                        <!--<input id="numberLi" type="text" name="numberLi" maxlength="3" style="width: 40px" value="1"/>-->
+                    <!--</label>-->
+                <!--</li>-->
+                <!--<li id="plus" class="cart-message-number-li" onmouseover="this.style.cursor = 'pointer'">+</li>-->
+                <!--<li id="minus" class="cart-message-number-li" onmouseover="this.style.cursor = 'pointer'"-->
+                    <!--style="font-size: 30px; margin-top: 2px;">- -->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="cart-message-money">15</div>-->
+        <!--<div class="cart-message-operation">-->
+            <!--<div id="cart-message-operation-remove" class="cart-message-operation-remove" onmouseover="this.style.cursor='pointer'">删除</div>-->
+            <!--<div id="cart-message-operation-commit" class="cart-message-operation-commit" onmouseover="this.style.cursor='pointer'">结算</div>-->
+        <!--</div>-->
+        <!--<div class="cart-message-absolute">-->
+
+        <!--</div>-->
+    <!--</div>-->
+</div>
+</body>
+</html>

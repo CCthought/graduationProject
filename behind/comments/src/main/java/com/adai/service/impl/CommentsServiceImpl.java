@@ -6,6 +6,7 @@ import com.adai.service.ICommentsService;
 import com.adai.utils.DateFormatUtil;
 import com.adai.utils.PageResult;
 import com.adai.vo.reponse.PageComments;
+import com.adai.vo.request.AddCommentRequest;
 import com.adai.vo.request.CommentsPageRequest;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +47,11 @@ public class CommentsServiceImpl implements ICommentsService{
     @Override
     public Integer getCountsComments(Integer itemId, Integer category) {
         return commentsDao.getCountsComments(itemId, category);
+    }
+
+    @Override
+    public Integer addComment(AddCommentRequest addComment) {
+        return commentsDao.addComment(addComment);
     }
 
 }

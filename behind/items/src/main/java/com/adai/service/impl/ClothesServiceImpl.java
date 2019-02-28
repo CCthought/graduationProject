@@ -3,8 +3,8 @@ package com.adai.service.impl;
 import com.adai.dao.ClothesDao;
 import com.adai.service.IClothesService;
 import com.adai.utils.PageResult;
-import com.adai.vo.reponse.IndexClothesResponse;
-import com.adai.vo.reponse.UniqueClothes;
+import com.adai.vo.response.clothes.IndexClothesResponse;
+import com.adai.vo.response.clothes.UniqueClothes;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,13 +22,13 @@ public class ClothesServiceImpl implements IClothesService {
     private ClothesDao clothesdao;
 
     @Override
-    public Integer selectAllCounts() {
-        return clothesdao.selectAllCounts();
+    public Integer selectClothesCounts() {
+        return clothesdao.selectClothesCounts();
     }
 
     @Override
     public PageResult<IndexClothesResponse> getPageIndexClothes(Integer pageSize, Integer currentPage) {
-        return new PageResult<>(pageSize, this.selectAllCounts(), currentPage, this.getPageListIndexClothes(pageSize, currentPage));
+        return new PageResult<>(pageSize, this.selectClothesCounts(), currentPage, this.getPageListIndexClothes(pageSize, currentPage));
     }
 
     @Override

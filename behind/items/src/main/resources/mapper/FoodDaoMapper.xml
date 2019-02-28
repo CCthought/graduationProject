@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adai.dao.FoodDao">
+
+    <sql id="Table_food">
+        items
+    </sql>
+
+    <select id="selectFoodCounts" resultType="java.lang.Integer">
+        select count(*) from
+        <include refid="Table_food"/> where category = 2
+    </select>
+
+    <select id="getPageListIndexFood" parameterType="java.lang.Integer"
+            resultType="com.adai.vo.response.food.IndexFoodResponse">
+        select id,category, `name`,price,discount,saled,imgPath from
+        <include refid="Table_food"/>
+        where category = 2
+        LIMIT #{param1} OFFSET #{param2}
+    </select>
+
+    <select id="getUniqueFood" parameterType="java.lang.Integer" resultType="com.adai.vo.response.food.UniqueFood">
+        select id,category,`name`,price,discount,saled,imgPath,location,description from
+        <include refid="Table_food"/>
+        where id = #{id} and category = 2
+    </select>
+
+</mapper>

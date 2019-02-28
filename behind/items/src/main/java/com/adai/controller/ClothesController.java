@@ -2,15 +2,12 @@ package com.adai.controller;
 
 import com.adai.service.IClothesService;
 import com.adai.utils.ActionResponse;
-import com.adai.vo.reponse.IndexClothesResponse;
-import com.adai.vo.reponse.UniqueClothes;
+import com.adai.vo.response.clothes.UniqueClothes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * author Adai
@@ -34,6 +31,11 @@ public class ClothesController {
         return ActionResponse.success(clothesService.getPageIndexClothes(pageSize, currentPage));
     }
 
+    /**
+     * 通过ID 来唯一确定获得的衣服
+     * @param id .
+     * @return .
+     */
     @RequestMapping(value = "getUniqueClothes", method = RequestMethod.GET)
     private ActionResponse getUniqueClothes(Integer id) {
         UniqueClothes uniqueClothes = clothesService.getUniqueClothes(id);

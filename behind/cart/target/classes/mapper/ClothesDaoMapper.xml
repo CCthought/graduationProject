@@ -8,20 +8,91 @@
 
     <sql id="Table_column">
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            itemId,category,`name`,price,color,`size`,location,`count`,imgPath,account,
+            itemId,category,`name`,price,location,`count`,imgPath,account,
+            <if test=" color != null ">
+                color,
+            </if>
+            <if test=" size != null ">
+                `size`,
+            </if>
+            <if test=" description != null ">
+                description,
+            </if>
         </trim>
     </sql>
 
     <sql id="Column_ALL_Values">
         <trim prefix="values(" suffix=")" suffixOverrides=",">
-            #{itemId},#{category},#{name},#{price},#{color},#{size},#{location},#{count},#{imgPath}, #{account}
+            #{itemId},#{category},#{name},#{price},#{location},#{count},#{imgPath},
+            #{account},
+
+            <if test=" color != null ">
+                #{color},
+            </if>
+            <if test=" size != null ">
+                #{size},
+            </if>
+            <if test=" description != null ">
+                #{description},
+            </if>
+
         </trim>
     </sql>
 
-    <insert id="insertCart" parameterType="com.adai.entity.Cart">
+    <insert id="insertCart" parameterType="com.adai.vo.request.InsertCartRequest">
         insert into
         <include refid="Table_cart"/>
         <include refid="Table_column"/>
         <include refid="Column_ALL_Values"/>
     </insert>
+
+    <select id="getPageListCarts"
+            resultType="com.adai.vo.response.CartResponse">
+        select id,itemId,category,`name`,price,`count`,imgPath,color,`size`,location
+        from <include refid="Table_cart" />
+        WHERE account = #{param3}
+        limit #{param1} offset #{param2}
+    </select>
+
+    <select id="selectCartCounts" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) FROM
+        <include refid="Table_cart" />
+        where account = #{account}
+    </select>
+
+    <select id="isExistCart" resultType="java.lang.Integer">
+        select count(*) FROM
+        <include refid="Table_cart" />
+        where itemId = #{param1} and color = #{param2} and `size` = #{param3}
+    </select>
+    <select id="selectCartById" parameterType="java.lang.Integer"
+            resultType="com.adai.vo.response.CartResponse">
+       select id,itemId,category,`name`,price,`count`,imgPath,color,`size`,location
+        from <include refid="Table_cart" />
+        WHERE id = #{id}
+    </select>
+
+    <update id="plusCounts">
+        update
+        <include refid="Table_cart" />
+        set `count` = `count` + #{param2}
+        where itemId = #{param1}
+    </update>
+
+    <update id="changeCount">
+        UPDATE
+        <include refid="Table_cart" />
+        set `count` = #{param2}
+        where id = #{param1}
+    </update>
+
+    <delete id="deleteCartById">
+        delete from <include refid="Table_cart" />
+        where id = #{id}
+    </delete>
+
+    <delete id="removeAllCarts">
+        delete from <include refid="Table_cart" />
+        where account = #{account}
+    </delete>
 </mapper>

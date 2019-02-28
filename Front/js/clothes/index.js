@@ -32,7 +32,7 @@ function getPageClothes(currentPage, pageSize) {
 // 渲染翻页小方块
 function spanSquare(domId, result, currentPage, pageSize) {
     for (let i = 0; i < result.body.items.length; i++) {
-        $(domId).append(`<div class="addedClothes"><a href="../../html/clothes/${result.body.items[i].id}.html?id=${result.body.items[i].id}&category=${result.body.items[i].category}"><img src="../../images/clothes/${result.body.items[i].imgPath}" width="100%" height="260px" alt="picture"/></a><span style="display: inline-block;font-size: 16px;">${result.body.items[i].name}<br />原价￥${result.body.items[i].price} 折扣价<span style="color: red;">￥${result.body.items[i].discount}</span><br />销售量:${result.body.items[i].saled}</span></div>`);
+        $(domId).append(`<div class="addedClothes"><a href="../../html/clothes/clothes.html?id=${result.body.items[i].id}&category=${result.body.items[i].category}"><img src="../../images/${result.body.items[i].imgPath}" width="100%" height="260px" alt="picture"/></a><span style="display: inline-block;font-size: 16px;">${result.body.items[i].name}<br />原价￥${result.body.items[i].price} 折扣价<span style="color: red;">￥${result.body.items[i].discount}</span><br />销售量:${result.body.items[i].saled}</span></div>`);
     }
     // 增加<  >小方块
     $(domId).append('<div class="pageTurning"><div id="pageTurningSquareFront" class="pageTurningSquare">&lt;</div>' +

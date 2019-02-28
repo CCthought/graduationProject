@@ -1,5 +1,6 @@
 package com.adai.entity;
 
+
 import java.util.List;
 
 /**
@@ -7,20 +8,26 @@ import java.util.List;
  * create 2019-02-21  22:09
  */
 public class Clothes {
+    private Integer id;
     private Integer category;
     private String name;
     private Integer price;
     private Integer discount;
     private Integer saled;
     private List<String> color;
-    private Integer size;
+    private List<Integer> size;
     private String imgPath;
-    private String href;
+    private String location;
+//    @JsonIgnore
+//    private String colorTemp;
+//    @JsonIgnore
+//    private String sizeTemp;
 
     @Override
     public String toString() {
         return "Clothes{" +
-                "category=" + category +
+                "id=" + id +
+                ", category=" + category +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", discount=" + discount +
@@ -28,8 +35,16 @@ public class Clothes {
                 ", color=" + color +
                 ", size=" + size +
                 ", imgPath='" + imgPath + '\'' +
-                ", href='" + href + '\'' +
+                ", location='" + location + '\'' +
                 '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getCategory() {
@@ -80,11 +95,11 @@ public class Clothes {
         this.color = color;
     }
 
-    public Integer getSize() {
+    public List<Integer> getSize() {
         return size;
     }
 
-    public void setSize(Integer size) {
+    public void setSize(List<Integer> size) {
         this.size = size;
     }
 
@@ -96,20 +111,21 @@ public class Clothes {
         this.imgPath = imgPath;
     }
 
-    public String getHref() {
-        return href;
+    public String getLocation() {
+        return location;
     }
 
-    public void setHref(String href) {
-        this.href = href;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Clothes() {
 
     }
 
-    public Clothes(Integer category, String name, Integer price, Integer discount, Integer saled, List<String> color, Integer size, String imgPath, String href) {
+    public Clothes(Integer id, Integer category, String name, Integer price, Integer discount, Integer saled, List<String> color, List<Integer> size, String imgPath, String location) {
 
+        this.id = id;
         this.category = category;
         this.name = name;
         this.price = price;
@@ -118,6 +134,6 @@ public class Clothes {
         this.color = color;
         this.size = size;
         this.imgPath = imgPath;
-        this.href = href;
+        this.location = location;
     }
 }
