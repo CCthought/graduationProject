@@ -29,16 +29,29 @@
             <include refid="All_values"/>
         </trim>
     </insert>
+    <update id="recharge">
+        UPDATE
+        <include refid="Table_Name" />
+        set balance = balance + #{param1}
+        where account = #{param2}
+    </update>
 
     <select id="isUniqueAccount" resultType="java.lang.String" parameterType="java.lang.String">
         select account from
         <include refid="Table_Name"/>
         where account = #{account}
     </select>
+
     <select id="login" resultType="java.lang.Integer">
         select count(*) from
         <include refid="Table_Name"/>
         where account = #{arg0} and password = #{arg1}
+    </select>
+
+    <select id="getAccountAndMoney" resultType="java.util.Map">
+        select account,balance FROM
+        <include refid="Table_Name" />
+        where account = #{account}
     </select>
 
     <delete id="logout" parameterType="java.lang.String">
@@ -46,4 +59,11 @@
         <include refid="Table_Name"/>
         where account = #{account}
     </delete>
+
+    <!--查询用户余额-->
+    <select id="getBalance" resultType="java.lang.Integer">
+        select balance from
+        <include refid="Table_Name" />
+        where account = #{account}
+    </select>
 </mapper>

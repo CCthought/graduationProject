@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * author Adai
@@ -16,25 +17,40 @@ import javax.annotation.Resource;
 public class UserServiceImpl implements IUserService {
 
     @Resource
-    private UserDao userdao;
+    private UserDao userDao;
 
     @Override
     public Integer insert(User user) {
-        return userdao.insert(user);
+        return userDao.insert(user);
     }
 
     @Override
     public String isUniqueAccount(String account) {
-        return userdao.isUniqueAccount(account);
+        return userDao.isUniqueAccount(account);
     }
 
     @Override
     public Integer login(String account, String password) {
-        return userdao.login(account, password);
+        return userDao.login(account, password);
+    }
+
+    @Override
+    public Map<String, Object> getAccountAndMoney(String account) {
+        return userDao.getAccountAndMoney(account);
     }
 
     @Override
     public Integer logout(String account) {
-        return userdao.logout(account);
+        return userDao.logout(account);
+    }
+
+    @Override
+    public Integer getBalance(String account) {
+        return userDao.getBalance(account);
+    }
+
+    @Override
+    public Integer recharge(Integer money, String account) {
+        return userDao.recharge(money, account);
     }
 }

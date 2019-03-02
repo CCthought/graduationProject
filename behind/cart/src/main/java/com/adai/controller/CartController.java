@@ -83,4 +83,19 @@ public class CartController {
     public ActionResponse getAllMoney(String account){
         return ActionResponse.success(cartService.getAllMoney(account));
     }
+
+    @RequestMapping(value = "/getAllCarts", method = RequestMethod.GET)
+    public ActionResponse getAllCarts(String account){
+        return ActionResponse.success(cartService.getAllCarts(account));
+    }
+
+    @RequestMapping(value = "/deleteAllCarts", method = RequestMethod.GET)
+    public ActionResponse deleteAllCarts(String account){
+        Integer IS_SUCCESS = cartService.deleteAllCarts(account);
+        if(IS_SUCCESS >= 1){
+            return ActionResponse.success();
+        } else{
+            return new ActionResponse("497","删除购物车失败");
+        }
+    }
 }

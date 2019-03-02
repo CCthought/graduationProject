@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * author Adai
@@ -26,17 +25,17 @@ public class CartServiceImpl implements ICartService {
     public Integer insertCart(InsertCartRequest cart) {
         Integer isExist;
         // 判断购物车属于那个类别 是否有 color size
-        if (cart.getCount() == null && cart.getSize() == null) {
+        if (cart.getCount() != null && cart.getSize() != null) {
             // 1 代表数据库已经有这个购物车相关信息了 0 代表没有
-            isExist = this.isExistCartHasColorSize(cart.getItemId(), cart.getColor(), cart.getSize());
+            isExist = this.isExistCartHasColorSize(cart.getItemId(), cart.getColor(), cart.getSize(),cart.getAccount());
         } else {
             // 1 代表数据库已经有这个购物车相关信息了 0 代表没有
-            isExist = this.isExistCartNoColorSize(cart.getItemId());
+            isExist = this.isExistCartNoColorSize(cart.getItemId(),cart.getAccount());
         }
         if (isExist == 0) {
             return cartDao.insertCart(cart);
         } else {
-            return this.plusCounts(cart.getItemId(), cart.getCount());
+            return this.plusCounts(cart.getItemId(), cart.getCount(),cart.getAccount());
         }
     }
 
@@ -63,18 +62,18 @@ public class CartServiceImpl implements ICartService {
     }
 
     @Override
-    public Integer isExistCartHasColorSize(Integer itemId, String color, Integer size) {
-        return cartDao.isExistCartHasColorSize(itemId, color, size);
+    public Integer isExistCartHasColorSize(Integer itemId, String color, Integer size,String account) {
+        return cartDao.isExistCartHasColorSize(itemId, color, size,account);
     }
 
     @Override
-    public Integer isExistCartNoColorSize(Integer itemId) {
-        return cartDao.isExistCartNoColorSize(itemId);
+    public Integer isExistCartNoColorSize(Integer itemId,String account) {
+        return cartDao.isExistCartNoColorSize(itemId,account);
     }
 
     @Override
-    public Integer plusCounts(Integer itemId, Integer count) {
-        return cartDao.plusCounts(itemId, count);
+    public Integer plusCounts(Integer itemId, Integer count,String account) {
+        return cartDao.plusCounts(itemId, count,account);
     }
 
     @Override
@@ -114,5 +113,15 @@ public class CartServiceImpl implements ICartService {
             }
         }
         return totalMoney;
+    }
+
+    @Override
+    public List<CartResponse> getAllCarts(String account) {
+        return cartDao.getAllCarts(account);
+    }
+
+    @Override
+    public Integer deleteAllCarts(String account) {
+        return cartDao.deleteAllCarts(account);
     }
 }

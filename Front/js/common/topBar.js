@@ -17,14 +17,15 @@ function getCookie(cname) {
     return "";
 }
 
-function clearCookie(name) {
+function clearCookie(name,balance) {
     setCookie(name, "", -1);
+    setCookie(balance, "", -1);
 }
 // 当点击退出登陆时，执行该方法
 // 该方法在代码块中会被使用
 // <a id='logoutStatus' href="javascript:void(0);" style="display: none;" onClick = "logout();">退出登录</a>
 function logout() {
-    clearCookie('account');
+    clearCookie('account','balance');
     window.location.href = '\\Front\\html\\login\\login.html';
 }
 
@@ -35,12 +36,34 @@ function initializeTopbar() {
         let login = document.getElementById('loginStatus');
         let register = document.getElementById('registerStatus');
         let logout = document.getElementById('logoutStatus');
-
+        let recharge = document.getElementById("recharge");
+        let balance = document.getElementById("balance");
         login.innerHTML = '欢迎您，' + account;
         login.href = "javascript:void()";
         register.style.display = 'none';
         logout.style.color = 'black';
         logout.style.display = 'block';
+        recharge.style.display = "block";
+        balance.style.display = "block";
+        $.ajax({
+            async: true,
+            type: "get",
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            url: "http://localhost:8080/getBalance",
+            data: "account="+getCookie("account"),
+            success: function (result) {
+                if (result.head.code === '200') {
+                    document.getElementById("accountMoney").innerHTML = result.body;
+                } else {
+                    alert(result.head.result);
+                }
+            },
+            error: function () {
+                alert("异常！");
+            }
+        });
+
     }
 }
 

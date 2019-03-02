@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>recharge</title>
+
+    <!--因为所有页面都要引入该topBar.html 所以以下属性是公共的-->
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="../../normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common/topBar.css"/>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/common/topBar.js"></script>
+    <!--因为所有页面 都要引入该topBar.html 所以以上属性是公共的-->
+
+    <style type="text/css">
+        #chargePage {
+            border: 1px solid black;
+            width: 1500px;
+            height: 600px;
+            margin: 20px auto;
+        }
+
+        .chargePage-img {
+            border: 1px solid black;
+            width: 500px;
+            height: 300px;
+            float: left;
+            margin-left: 150px;
+            margin-top: 20px;
+        }
+
+        .chargePage-message {
+            border: 1px solid black;
+            width: 1000px;
+            height: 100px;
+            font-size: 40px;
+            color: red;
+            margin-top: 20px;
+            margin-left: 150px;
+            float: left;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            initializeTopbar();
+        }
+    </script>
+    <!--引入导航栏-->
+    <script type="text/javascript">
+        //在js中引入
+        $(window).ready(function () {
+            $('.topBar').load('../common/topBar');
+            let input = document.getElementById("chargePage-input");
+            let button = document.getElementById("chargePage-button");
+
+            input.onblur = function(){
+                if (!(/(^[1-9]\d*$)/.test(input.value))) {
+                    alert("请输入正整数");
+                    input.value = 1;
+                }
+            };
+
+            button.onclick = function(){
+                if(input.value === ""){
+                    alert("请输入充值金额");
+                    return false;
+                }
+                if (!(/(^[1-9]\d*$)/.test(input.value))) {
+                    alert("请输入正整数");
+                    input.value = 1;
+                    return false;
+                }
+
+                $.ajax({
+                    async: true,
+                    type: "get",
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    url: "http://localhost:8080/recharge",
+                    data: "money=" + Number.parseInt(input.value)+"&account="+getCookie("account"),
+                    success: function (result) {
+                        if (result.head.code === '200') {
+                           alert("充值成功，跳转到首页");
+                           let oldValue = Number.parseInt(getCookie('balance'));
+                           setCookie('balance',oldValue+Number.parseInt(input.value),30);
+                           window.location.href = "../../index.html";
+                        } else {
+                            alert(result.head.result);
+                        }
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+<!--让jQuery引入topBar start-->
+<div class="topBar"></div>
+<!--让jQuery引入topBar end-->
+
+<div id="chargePage">
+    <div class="chargePage-img">
+        <img alt="alipay"    src = "../../images/alipay.png" width="100%" height="100%" />
+    </div>
+    <div class="chargePage-img">
+        <img alt="wechatPay" src = "../../images/wechatPay.png" width="100%" height="100%" />
+    </div>
+
+    <div class="chargePage-message">
+            免费充值，想冲多少，冲多少！！！！！！！！！！
+    </div>
+
+    <div class="chargePage-message">
+        <label>
+            <input id="chargePage-input" style="margin: 20px 20px;" />
+            <button id="chargePage-button">充值</button>
+        </label>
+    </div>
+</div>
+
+</body>
+</html>

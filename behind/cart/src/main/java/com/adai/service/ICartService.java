@@ -22,11 +22,11 @@ public interface ICartService {
 
     List<CartResponse> selectCartById(Integer id);
 
-    Integer isExistCartHasColorSize(Integer itemId, String color, Integer size);
+    Integer isExistCartHasColorSize(Integer itemId, String color, Integer size,String account);
 
-    Integer isExistCartNoColorSize(Integer itemId);
+    Integer isExistCartNoColorSize(Integer itemId, String account);
 
-    Integer plusCounts(Integer itemId, Integer count);
+    Integer plusCounts(Integer itemId, Integer count,String account);
 
     Integer changeCount(Integer id, Integer count);
 
@@ -36,4 +36,9 @@ public interface ICartService {
 
     // 该方法返回值 和dao不一样
     Integer getAllMoney(String account);
+
+    // 该接口专门为 确定订单的时候  拿到所有的购物车数据 进行结算
+    List<CartResponse> getAllCarts(String account);
+
+    Integer deleteAllCarts(String account);
 }

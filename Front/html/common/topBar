@@ -17,4 +17,11 @@
     <li>
         <a href="javascript:void(0);" style = "color: #FF0000"  onClick = "isLoginWhenClickCart();">我的订单</a>
     </li>
+    <li>
+        <a id="recharge" href="\Front\html\common\recharge.html" style = "color: #FF0000;display: none">充值</a>
+    </li>
+    <li>
+        <a id="balance" href="javascript:void(0);" style = "color: #FF0000;display: none">
+        账户余额: <span id="accountMoney"></span></a>
+    </li>
 </ul>

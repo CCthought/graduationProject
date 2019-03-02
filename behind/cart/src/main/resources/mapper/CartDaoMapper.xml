@@ -64,14 +64,14 @@
     <select id="isExistCartHasColorSize" resultType="java.lang.Integer">
         select count(*) FROM
         <include refid="Table_cart"/>
-        where itemId = #{param1} and color = #{param2} and `size` = #{param3}
+        where itemId = #{param1} and color = #{param2} and `size` = #{param3} and account = #{param4}
     </select>
 
-    <select id="isExistCartNoColorSize" parameterType="java.lang.Integer"
+    <select id="isExistCartNoColorSize"
             resultType="java.lang.Integer">
         select count(*) FROM
         <include refid="Table_cart"/>
-        where itemId = #{itemId}
+        where itemId = #{param1} and account = #{param2}
     </select>
 
     <select id="selectCartById" parameterType="java.lang.Integer"
@@ -88,11 +88,18 @@
         where account = #{account}
     </select>
 
+    <select id="getAllCarts" resultType="com.adai.vo.response.CartResponse">
+        select id,itemId,category,`name`,price,`count`,imgPath,color,`size`,location
+        FROM
+        <include refid="Table_cart" />
+        where account = #{account}
+    </select>
+
     <update id="plusCounts">
         update
         <include refid="Table_cart"/>
         set `count` = `count` + #{param2}
-        where itemId = #{param1}
+        where itemId = #{param1} and account = #{param3}
     </update>
 
     <update id="changeCount">
@@ -111,6 +118,11 @@
     <delete id="removeAllCarts">
         delete from
         <include refid="Table_cart"/>
+        where account = #{account}
+    </delete>
+    <delete id="deleteAllCarts">
+        delete from
+        <include refid="Table_cart" />
         where account = #{account}
     </delete>
 </mapper>

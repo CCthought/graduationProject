@@ -16,18 +16,20 @@ public class User {
     private String email;
     private String sex;
     private String registerTime;
+    private Integer balance;
 
-    public User(String account, String realname, String password, String phone, String email, String sex, String registerTime) {
-        this.account = account;
-        this.realname = realname;
-        this.password = password;
-        this.phone = phone;
-        this.email = email;
-        this.sex = sex;
-        this.registerTime = registerTime;
-    }
-
-    public User() {
+    @Override
+    public String toString() {
+        return "User{" +
+                "account='" + account + '\'' +
+                ", realname='" + realname + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", sex='" + sex + '\'' +
+                ", registerTime='" + registerTime + '\'' +
+                ", balance=" + balance +
+                '}';
     }
 
     public String getAccount() {
@@ -86,20 +88,27 @@ public class User {
         this.registerTime = registerTime;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "account='" + account + '\'' +
-                ", realname='" + realname + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", sex='" + sex + '\'' +
-                ", registerTime='" + registerTime + '\'' +
-                '}';
+    public Integer getBalance() {
+        return balance;
     }
-    @JsonIgnore
-    public Long getTime(){
-        return System.currentTimeMillis() / 1000;
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
+    public User() {
+
+    }
+
+    public User(String account, String realname, String password, String phone, String email, String sex, String registerTime, Integer balance) {
+
+        this.account = account;
+        this.realname = realname;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.sex = sex;
+        this.registerTime = registerTime;
+        this.balance = balance;
     }
 }

@@ -29,7 +29,8 @@ window.onload = function () {
                 success: function (result) {
                     if (result.head.code === '200') {
                         alert('登陆成功，跳转到首页');
-                        setCookie('account', result.body, 30);
+                        setCookie('account', result.body.account, 30);
+                        setCookie('balance', result.body.balance, 30);
                         window.location.href = '../../index.html';
                     } else {
                         alert(result.head.result);
