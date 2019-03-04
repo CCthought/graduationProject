@@ -40,4 +40,7 @@ public interface CartDao {
     List<CartResponse> getAllCarts(String account);
 
     Integer deleteAllCarts(String account);
+
+    // 专门为 立即购买 按钮 准备的接口 通过itemId account 拿到cartId
+    Integer getCartIdByItemIdAndAccount(Integer itemId, String account, String color, Integer size);
 }

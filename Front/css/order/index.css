@@ -1,0 +1,159 @@
+#order {
+    border: 1px solid black;
+    width: 1500px;
+    height: auto;
+    margin: 20px auto;
+}
+
+.order-header {
+    border: 1px solid black;
+    width: 1400px;
+    height: 50px;
+    margin: 20px auto;
+}
+
+.order-message {
+    border: 1px solid black;
+    width: 1400px;
+    height: 150px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.order-message-img {
+    border: 1px solid black;
+    width: 200px;
+    height: 150px;
+    float: left;
+}
+
+.order-message-name {
+    border: 1px solid black;
+    width: 200px;
+    height: 100px;
+    margin: 20px 20px;
+    font-size: 24px;
+    word-break: break-all;
+    float: left;
+}
+
+.order-message-price {
+    border: 1px solid black;
+    width: 150px;
+    height: auto;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-size: 24px;
+    float: left;
+}
+
+.order-message-number {
+    border: 1px solid black;
+    width: 200px;
+    height: auto;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-left: 30px;
+    float: left;
+}
+
+.order-message-number-li {
+    margin-top: 10px;
+    margin-left: 20px;
+    float: left;
+}
+
+.order-message-money {
+    border: 1px solid black;
+    width: 150px;
+    height: auto;
+    margin: 20px 30px;
+    font-size: 24px;
+    float: left;
+}
+
+.order-message-operation {
+    border: 1px solid black;
+    width: 200px;
+    height: 120px;
+    margin: 20px 50px;
+    font-size: 24px;
+    float: left;
+}
+
+.order-message-operation-remove {
+    border: 1px solid black;
+    width: 140px;
+    height: 30px;
+    font-size: 27px;
+    text-align: center;
+    background-color: rgb(255, 237, 237);
+}
+
+.order-message-operation-commit {
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+    font-size: 27px;
+    text-align: center;
+    margin-top: 20px;
+    background-color: rgb(255, 0, 54);
+}
+
+.order-message-absolute {
+    border: 1px solid black;
+    width: 150px;
+    height: 65px;
+    font-size: 24px;
+    left: 500px;
+    top: 80px;
+    position: absolute;
+}
+
+.order-location-absolute {
+    border: 1px solid black;
+    width: 400px;
+    height: 85px;
+    font-size: 24px;
+    left: 700px;
+    top: 60px;
+    position: absolute;
+}
+
+#order-message-removeAndCommit {
+    border: 1px solid black;
+    width: 260px;
+    height: 40px;
+    margin-left: 1200px;
+}
+
+.order-message-removeAndCommit {
+    border: 1px solid black;
+    margin-left: 20px;
+    font-size: 24px;
+    float: left;
+}
+
+
+/*分页专属class*/
+.pageTurning {
+    border: 1px solid black;
+    width: 250px;
+    height: 50px;
+    margin: auto;
+    clear: both;
+}
+
+.pageTurningSquare {
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    margin-top: 30px;
+    text-align: center;
+    line-height: 20px;
+    float: left;
+}
+
+.current {
+    background-color: red;
+}

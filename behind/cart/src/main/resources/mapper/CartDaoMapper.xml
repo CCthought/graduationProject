@@ -95,6 +95,21 @@
         where account = #{account}
     </select>
 
+    <select id="getCartIdByItemIdAndAccount" resultType="java.lang.Integer">
+        select id from
+        <include refid="Table_cart" />
+        <trim>
+            where itemId = #{param1} and account = #{param2}
+            <if test = " param3 != null">
+               and color = #{param3}
+            </if>
+            <if test = " param4 != null">
+               and size = #{param4}
+            </if>
+        </trim>
+
+    </select>
+
     <update id="plusCounts">
         update
         <include refid="Table_cart"/>

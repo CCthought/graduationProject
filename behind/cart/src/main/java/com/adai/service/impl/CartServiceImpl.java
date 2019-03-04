@@ -124,4 +124,9 @@ public class CartServiceImpl implements ICartService {
     public Integer deleteAllCarts(String account) {
         return cartDao.deleteAllCarts(account);
     }
+
+    @Override
+    public Integer getCartIdByItemIdAndAccount(Integer itemId, String account,String color,Integer size) {
+        return cartDao.getCartIdByItemIdAndAccount(itemId, account,color,size);
+    }
 }

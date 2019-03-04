@@ -86,11 +86,29 @@ function getUniqueFood(id, category) {
                             let itemId = result.body.id;
                             let category = result.body.category;
                             let description = result.body.description;
-                            addCart(name, price, location, account, count, imgPath, itemId, category,description);
+                            addCart(name, price, location, account, count, imgPath, itemId, category,description,-1);
                         } else {
                             alert('亲爱的用户，请先登陆');
                             window.location.href = "../../html/login/login.html"
                         }
+                };
+
+                $('.message-food-buyAndCart')[0].onclick = function () {
+                    if (getCookie('account') !== "") {
+                        let name = result.body.name;
+                        let price = result.body.discount;
+                        let location = result.body.location;
+                        let account = getCookie('account');
+                        let count = document.getElementById("numberLi").value;
+                        let imgPath = result.body.imgPath;
+                        let itemId = result.body.id;
+                        let category = result.body.category;
+                        let description = result.body.description;
+                        addCart(name, price, location, account, count, imgPath, itemId, category,description,-2);
+                    } else {
+                        alert('亲爱的用户，请先登陆');
+                        window.location.href = "../../html/login/login.html"
+                    }
                 }
 
             } else {
@@ -151,7 +169,7 @@ function getComments(id, category, currentPage, pageSize) {
 }
 
 // 购物车
-function addCart(name, price, location, account, count, imgPath, itemId, category,description) {
+function addCart(name, price, location, account, count, imgPath, itemId, category,description, flag) {
     $.ajax({
         async: true,
         type: "POST",
@@ -170,7 +188,30 @@ function addCart(name, price, location, account, count, imgPath, itemId, categor
             description: description
         }),
         success: function (result) {
-            alert("加入购物车 成功");
+            if (flag === -1) {
+                alert("加入购物车 成功");
+                window.location.href = "../../html/food/index.html";
+            } else {
+                // 点击立即购买 已经将数据丢到购物车里面了 现在拿到cartId  然后跳转到confirmOrder页面
+                $.ajax({
+                    async: true,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    url: "http://localhost:8082/getCartIdByItemIdAndAccount",
+                    data: `account=${account}&itemId=${itemId}`,
+                    success: function (result) {
+                        if (result.head.code === '200') {
+                            window.location.href = '../../html/cart/confirmOrder.html?id='+result.body;
+                        } else {
+                            alert(result.head.result);
+                        }
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            }
         },
         error: function () {
             alert("异常！");

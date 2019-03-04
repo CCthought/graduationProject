@@ -19,6 +19,8 @@ public class Order {
     private String address;
     private String reveiver;
     private String phone;
+    private Long orderTime;
+    private String strOrderTime;
 
     @Override
     public String toString() {
@@ -37,6 +39,8 @@ public class Order {
                 ", address='" + address + '\'' +
                 ", reveiver='" + reveiver + '\'' +
                 ", phone='" + phone + '\'' +
+                ", orderTime=" + orderTime +
+                ", strOrderTime='" + strOrderTime + '\'' +
                 '}';
     }
 
@@ -152,11 +156,27 @@ public class Order {
         this.phone = phone;
     }
 
+    public Long getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(Long orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public String getStrOrderTime() {
+        return strOrderTime;
+    }
+
+    public void setStrOrderTime(String strOrderTime) {
+        this.strOrderTime = strOrderTime;
+    }
+
     public Order() {
 
     }
 
-    public Order(Integer id, Integer itemId, Integer category, String name, Integer price, String color, Integer size, String location, Integer count, String imgPath, String account, String address, String reveiver, String phone) {
+    public Order(Integer id, Integer itemId, Integer category, String name, Integer price, String color, Integer size, String location, Integer count, String imgPath, String account, String address, String reveiver, String phone, Long orderTime, String strOrderTime) {
 
         this.id = id;
         this.itemId = itemId;
@@ -172,5 +192,7 @@ public class Order {
         this.address = address;
         this.reveiver = reveiver;
         this.phone = phone;
+        this.orderTime = orderTime;
+        this.strOrderTime = strOrderTime;
     }
 }

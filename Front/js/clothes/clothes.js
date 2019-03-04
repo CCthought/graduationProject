@@ -109,7 +109,7 @@ function getUniqueClothes(id, category) {
                     document.getElementById('numberLi').value = Number.parseInt(oldValue) - 1;
                 };
 
-                // 购买按钮 和 购物车 注册鼠标 点击事件
+                //  购物车 注册鼠标 点击事件
                 $('.message-clothes-buyAndCart')[1].onclick = function () {
                     let colorFlag = false;
                     let sizeFlag = false;
@@ -134,7 +134,46 @@ function getUniqueClothes(id, category) {
                             let imgPath = result.body.imgPath;
                             let itemId = result.body.id;
                             let category = result.body.category;
-                            addCart(name, price, location, account, count, imgPath, itemId, category, color, size);
+                            // -1 表示 点击按钮是购物车
+                            addCart(name, price, location, account, count, imgPath, itemId, category, color, size, -1);
+                        } else {
+                            alert('亲爱的用户，请先登陆');
+                            window.location.href = "../../html/login/login.html"
+                        }
+                    } else if (colorFlag === false) {
+                        alert('亲爱的用户，请选择一个颜色');
+                    } else if (sizeFlag === false) {
+                        alert('亲爱的用户，请选择一个大小');
+                    }
+                };
+
+                // 购买按钮  注册鼠标 点击事件
+                $('.message-clothes-buyAndCart')[0].onclick = function () {
+                    let colorFlag = false;
+                    let sizeFlag = false;
+                    for (let i = 1; i < colorLi.length; i++) {
+                        if (colorLi[i].style.backgroundColor === 'red') {
+                            colorFlag = true;
+                        }
+                    }
+                    for (let i = 1; i < sizeLi.length; i++) {
+                        if (sizeLi[i].style.backgroundColor === 'red') {
+                            sizeFlag = true;
+                        }
+                    }
+                    if (colorFlag === true && sizeFlag === true) {
+                        //  添加购物车
+                        if (getCookie('account') !== "") {
+                            let name = result.body.name;
+                            let price = result.body.discount;
+                            let location = result.body.location;
+                            let account = getCookie('account');
+                            let count = document.getElementById("numberLi").value;
+                            let imgPath = result.body.imgPath;
+                            let itemId = result.body.id;
+                            let category = result.body.category;
+                            // -2 表示 点击按钮是 立即购买
+                            addCart(name, price, location, account, count, imgPath, itemId, category, color, size, -2);
                         } else {
                             alert('亲爱的用户，请先登陆');
                             window.location.href = "../../html/login/login.html"
@@ -204,7 +243,7 @@ function getComments(id, category, currentPage, pageSize) {
 }
 
 // 购物车
-function addCart(name, price, location, account, count, imgPath, itemId, category, color, size) {
+function addCart(name, price, location, account, count, imgPath, itemId, category, color, size, flag) {
     $.ajax({
         async: true,
         type: "POST",
@@ -224,7 +263,30 @@ function addCart(name, price, location, account, count, imgPath, itemId, categor
             category: category
         }),
         success: function (result) {
-            alert("加入购物车 成功");
+            if (flag === -1) {
+                alert("加入购物车 成功");
+                window.location.href = "../../html/clothes/index.html";
+            } else {
+                // 点击立即购买 已经将数据丢到购物车里面了 现在拿到cartId  然后跳转到confirmOrder页面
+                $.ajax({
+                    async: true,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    url: "http://localhost:8082/getCartIdByItemIdAndAccount",
+                    data: `account=${account}&itemId=${itemId}&color=${color}&size=${size}`,
+                    success: function (result) {
+                        if (result.head.code === '200') {
+                            window.location.href = '../../html/cart/confirmOrder.html?id='+result.body;
+                        } else {
+                            alert(result.head.result);
+                        }
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            }
         },
         error: function () {
             alert("异常！");
@@ -315,13 +377,16 @@ function addComment(itemId, category) {
             contentType: "application/json; charset=utf-8",
             url: "http://localhost:8083/addComment",
             data: JSON.stringify({
-                itemId: itemId, category: category, account: account, message: document.getElementById("myComments-textare").value,
+                itemId: itemId,
+                category: category,
+                account: account,
+                message: document.getElementById("myComments-textare").value,
                 commentTime: commentTime
             }),
             success: function (result) {
                 if (result.head.code === '200') {
                     getComments(itemId, category, 1, 5);
-                    getCountsComments(itemId,category,document.getElementById("commentsSpan"));
+                    getCountsComments(itemId, category, document.getElementById("commentsSpan"));
                 } else {
                     alert(result.head.result);
                 }

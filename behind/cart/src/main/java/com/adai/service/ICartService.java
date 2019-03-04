@@ -41,4 +41,6 @@ public interface ICartService {
     List<CartResponse> getAllCarts(String account);
 
     Integer deleteAllCarts(String account);
+
+    Integer getCartIdByItemIdAndAccount(Integer itemId, String account, String color, Integer size);
 }

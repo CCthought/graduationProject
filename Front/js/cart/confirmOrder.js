@@ -419,7 +419,8 @@ function insertOrder(result, orderAddress, orderReceiver, orderPhone) {
                     imgPath: result.body.items[i].imgPath,
                     address: orderAddress.value,
                     receiver: orderReceiver.value,
-                    phone: orderPhone.value
+                    phone: orderPhone.value,
+                    orderTime: (new Date().getTime()) / 1000,
                 }),
                 success: function (result) {
                     if (result.head.code === '200') {
@@ -465,7 +466,8 @@ function insertOrder(result, orderAddress, orderReceiver, orderPhone) {
                     imgPath: result.body[i].imgPath,
                     address: orderAddress.value,
                     receiver: orderReceiver.value,
-                    phone: orderPhone.value
+                    phone: orderPhone.value,
+                    orderTime: (new Date().getTime()) / 1000,
                 }),
                 success: function (result) {
                     if (result.head.code === '200') {

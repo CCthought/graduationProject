@@ -169,3 +169,46 @@
     float: left;
     margin-left: 30px;
 }
+
+
+
+
+/*首页下面的items*/
+.core-clothes {
+    border: 1px solid black;
+    width: 1500px;
+    height: auto;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.addedClothes {
+    border: 1px solid black;
+    width: 250px;
+    height: 320px;
+    margin-left: 40px;
+    margin-top: 20px;
+    float: left;
+}
+
+.pageTurning {
+    border: 1px solid black;
+    width: 250px;
+    height: 50px;
+    margin: auto;
+    clear: both;
+}
+
+.pageTurningSquare {
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    margin-top: 30px;
+    text-align: center;
+    line-height: 20px;
+    float: left;
+}
+
+.current {
+    background-color: red;
+}

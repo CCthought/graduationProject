@@ -1,10 +1,13 @@
-package com.adai.vo.request;
+package com.adai.vo.response;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * author Adai
- * create 2019-03-01  13:59
+ * create 2019-03-02  14:37
  */
-public class InsertOrder {
+public class OrderResponse {
+    private Integer id;
     private Integer itemId;
     private Integer category;
     private String name;
@@ -16,14 +19,17 @@ public class InsertOrder {
     private String imgPath;
     private String account;
     private String address;
-    private String receiver;
+    private String reveiver;
     private String phone;
+    @JsonIgnore
     private Long orderTime;
+    private String strOrderTime;
 
     @Override
     public String toString() {
-        return "InsertOrder{" +
-                "itemId=" + itemId +
+        return "OrderResponse{" +
+                "id=" + id +
+                ", itemId=" + itemId +
                 ", category=" + category +
                 ", name='" + name + '\'' +
                 ", price=" + price +
@@ -34,10 +40,19 @@ public class InsertOrder {
                 ", imgPath='" + imgPath + '\'' +
                 ", account='" + account + '\'' +
                 ", address='" + address + '\'' +
-                ", receiver='" + receiver + '\'' +
+                ", reveiver='" + reveiver + '\'' +
                 ", phone='" + phone + '\'' +
                 ", orderTime=" + orderTime +
+                ", strOrderTime='" + strOrderTime + '\'' +
                 '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getItemId() {
@@ -128,12 +143,12 @@ public class InsertOrder {
         this.address = address;
     }
 
-    public String getReceiver() {
-        return receiver;
+    public String getReveiver() {
+        return reveiver;
     }
 
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
+    public void setReveiver(String reveiver) {
+        this.reveiver = reveiver;
     }
 
     public String getPhone() {
@@ -152,12 +167,20 @@ public class InsertOrder {
         this.orderTime = orderTime;
     }
 
-    public InsertOrder() {
+    public String getStrOrderTime() {
+        return strOrderTime;
+    }
+
+    public void setStrOrderTime(String strOrderTime) {
+        this.strOrderTime = strOrderTime;
+    }
+
+    public OrderResponse() {
 
     }
 
-    public InsertOrder(Integer itemId, Integer category, String name, Integer price, String color, Integer size, String location, Integer count, String imgPath, String account, String address, String receiver, String phone, Long orderTime) {
-
+    public OrderResponse(Integer id, Integer itemId, Integer category, String name, Integer price, String color, Integer size, String location, Integer count, String imgPath, String account, String address, String reveiver, String phone, Long orderTime, String strOrderTime) {
+        this.id = id;
         this.itemId = itemId;
         this.category = category;
         this.name = name;
@@ -169,8 +192,9 @@ public class InsertOrder {
         this.imgPath = imgPath;
         this.account = account;
         this.address = address;
-        this.receiver = receiver;
+        this.reveiver = reveiver;
         this.phone = phone;
         this.orderTime = orderTime;
+        this.strOrderTime = strOrderTime;
     }
 }

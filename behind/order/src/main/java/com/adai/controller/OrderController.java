@@ -29,9 +29,15 @@ public class OrderController {
         System.err.println(order);
         Integer IS_SUCCESS = orderService.insertOrder(order);
         if(IS_SUCCESS == 1){
-            return ActionResponse.success();
+                return ActionResponse.success();
         } else{
             return new ActionResponse("497","订单插入失败");
         }
     }
+
+    @RequestMapping(value = "/getPageOrders", method = RequestMethod.GET)
+    public ActionResponse getPageOrders(Integer pageSize, Integer currentPage, String account){
+        return ActionResponse.success(orderService.getPageOrders(pageSize,currentPage,account));
+    }
+
 }

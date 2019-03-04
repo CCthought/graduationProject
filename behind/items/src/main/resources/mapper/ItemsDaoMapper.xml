@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adai.dao.ItemsDao">
+
+    <sql id="Table_items">
+        items
+    </sql>
+
+    <select id="selectItemsCounts" resultType="java.lang.Integer">
+        select count(*) from
+        <include refid="Table_items" />
+    </select>
+
+    <select id="getPageListIndexItems" resultType="com.adai.vo.response.IndexItemsResponse">
+        select id,category, `name`,price,discount,saled,imgPath from
+        <include refid="Table_items"/>
+        LIMIT #{param1} OFFSET #{param2}
+    </select>
+
+    <select id="getPageListSearchItems" resultType="com.adai.vo.response.IndexItemsResponse">
+        select id,category, `name`,price,discount,saled,imgPath from
+        <include refid="Table_items"/> where
+        <foreach collection="keyWords" separator="or"  item="keyWord">
+                name like CONCAT('%',#{keyWord},'%' )
+        </foreach>
+        LIMIT #{param1} OFFSET #{param2}
+    </select>
+
+    <select id="searchItemsCounts" resultType="java.lang.Integer">
+        select count(*) from
+        <include refid="Table_items" /> where
+        <foreach collection="keyWords" separator="or"  item="keyWord">
+            name like CONCAT('%',#{keyWord},'%' )
+        </foreach>
+    </select>
+
+</mapper>

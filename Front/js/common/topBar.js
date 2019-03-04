@@ -80,13 +80,26 @@ function isLoginWhenClickCart(){
     }
 }
 
+// 点击订单的时候 判断用户登陆没有
+function isLoginWhenClickOrder(){
+    this.onclick = function(){
+        if(getCookie('account') === ''){
+            alert('亲爱的用户，请先登陆');
+            window.location.href = "/Front/html/login/login.html";
+        } else{
+            window.location.href = "/Front/html/order/index.html";
+        }
+        return false;
+    }
+}
+
 // 获取地址栏 参数
 /**
  * @return {string}
  */
 function GetQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
+    let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    let r = window.location.search.substr(1).match(reg);
     if (r != null)
         return unescape(r[2]);
     return null;
