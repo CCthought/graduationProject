@@ -1,8 +1,6 @@
 package com.adai.service;
 
-import com.adai.entity.User;
 import com.adai.vo.request.RegisterUser;
-import org.springframework.stereotype.Service;
 
 import java.util.Map;
 

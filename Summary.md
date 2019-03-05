@@ -72,11 +72,19 @@ we must use `""` instead of `''` in Json
 
 select : resultTpy resultMap
 
-update,delete,insert: 
+insert: 
 
 ​		success: 1
 
-​		failure: 0
+​		failure: 0 
+
+​		exception: throw some relative exceptions
+
+update,delete:
+
+​		success:the effect of rows
+
+​		failure: 0 （也可以理解成 没有更新和删除任何的行 如 where id = 1 在数据库中没有这条数据）
 
 ​		exception: throw some relative exceptions
 
