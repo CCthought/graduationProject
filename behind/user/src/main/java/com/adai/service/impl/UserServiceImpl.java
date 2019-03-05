@@ -3,6 +3,7 @@ package com.adai.service.impl;
 import com.adai.dao.UserDao;
 import com.adai.entity.User;
 import com.adai.service.IUserService;
+import com.adai.vo.request.RegisterUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class UserServiceImpl implements IUserService {
     private UserDao userDao;
 
     @Override
-    public Integer insert(User user) {
+    public Integer insert(RegisterUser user) {
         return userDao.insert(user);
     }
 

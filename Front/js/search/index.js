@@ -41,7 +41,7 @@ function spanSquare(domId, result, currentPage, pageSize,keyWords) {
     for (let i = 0; i < result.body.items.length; i++) {
         let itemPathIndexOf = result.body.items[i].imgPath.indexOf("/");
         let itemPath = result.body.items[i].imgPath.substring(0,itemPathIndexOf);
-        $(domId).append(`<div class="addedClothes"><a href="../../html/${itemPath}/${itemPath}.html?id=${result.body.items[i].id}&category=${result.body.items[i].category}"><img src="../../images/${result.body.items[i].imgPath}" width="100%" height="260px" alt="picture"/></a><span style="display: inline-block;font-size: 16px;">${result.body.items[i].name}<br />原价￥${result.body.items[i].price} 折扣价<span style="color: red;">￥${result.body.items[i].discount}</span><br />销售量:${result.body.items[i].saled}</span></div>`);
+        $(domId).append(`<div class="addedItems"><a href="../../html/${itemPath}/${itemPath}.html?id=${result.body.items[i].id}&category=${result.body.items[i].category}"><img src="../../images/${result.body.items[i].imgPath}" width="100%" height="260px" alt="picture"/></a><span style="display: inline-block;font-size: 16px;">${result.body.items[i].name}<br />原价￥${result.body.items[i].price} 折扣价<span style="color: red;">￥${result.body.items[i].discount}</span><br />销售量:${result.body.items[i].saled}</span></div>`);
     }
     // 增加<  >小方块
     $(domId).append('<div class="pageTurning"><div id="pageTurningSquareFront" class="pageTurningSquare">&lt;</div>' +

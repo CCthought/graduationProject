@@ -1,6 +1,7 @@
 package com.adai.service;
 
 import com.adai.entity.User;
+import com.adai.vo.request.RegisterUser;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Map;
  */
 public interface IUserService {
 
-    Integer insert(User user);
+    Integer insert(RegisterUser user);
 
     String isUniqueAccount(String account);
 

@@ -31,7 +31,7 @@ function getPageOrders(currentPage, pageSize, account) {
 function renderOrders(domId, result) {
     $(domId).empty();
     if (result.body.items.length === 0) {
-        $(domId).append("<img src='../../images/order.png' width='1015' height='838' style='margin-left: 300px'/>");
+        $(domId).append("<img src='../../images/cart.png' width='1015' height='838' style='margin-left: 300px'/>");
         return;
     }
     $(domId).append(`

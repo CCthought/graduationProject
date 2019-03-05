@@ -1,6 +1,7 @@
 package com.adai.dao;
 
 import com.adai.entity.User;
+import com.adai.vo.request.RegisterUser;
 
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import java.util.Map;
  * create 2019-02-18  14:01
  */
 public interface UserDao {
-    Integer insert(User user);
+    Integer insert(RegisterUser user);
     String isUniqueAccount(String account);
 
     Integer login(String account, String password);

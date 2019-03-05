@@ -3,6 +3,7 @@ package com.adai.controller;
 import com.adai.entity.User;
 import com.adai.service.IUserService;
 import com.adai.utils.ActionResponse;
+import com.adai.vo.request.RegisterUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +24,9 @@ public class UserLogin {
     private IUserService userSerivce;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ActionResponse register(User user) {
+    public ActionResponse register(RegisterUser user) {
+        // 由于前端是表单提交       data: $('#myForm').serialize(), 所以这里的注册时间 在后台处理
+        user.setRegisterTime(System.currentTimeMillis() / 1000);
         Integer INSERT_SUCCESS = userSerivce.insert(user);
         if (INSERT_SUCCESS == 1) {
             return ActionResponse.success();

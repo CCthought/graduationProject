@@ -17,7 +17,7 @@
         #{phone},
         #{email},
         #{sex},
-        #{time}
+        #{registerTime}
     </sql>
     <insert id="insert" parameterType="com.adai.entity.User">
         INSERT INTO
