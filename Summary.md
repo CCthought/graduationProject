@@ -95,3 +95,42 @@ update,delete:
  this blog：https://blog.csdn.net/qq_24691413/article/details/83895574
 ```
 
+
+
+## 6 the difference between err and out
+
+```java
+    1. public class TestCodeSeg  
+    2. {  
+    3.     static  
+    4.     {  
+    5.         System.out.println("1");  
+    6.     }  
+    7.     {  
+    8.         System.out.println("2");  
+    9.     }  
+    10.     public TestCodeSeg()  
+    11.     {  
+    12.         System.err.println("3");  
+    13.     }  
+    14.     public static void main(String[] args)  
+    15.     {  
+    16.         new TestCodeSeg();  
+    17.     }  
+    18. }
+```
+
+the result：1，2顺序不变，3输出不定位置不定。
+
+原因：System.out.println输出有缓存，System.err.println是立即输出，可能在输出1或2，还没有输出换行时输出3。
+
+
+
+## 7 the difference of Tomcat/apache/nginx 
+
+参考知乎：<a href="https://www.zhihu.com/question/32212996">tomcat 与 nginx，apache的区别是什么？</a>
+
+
+
+## 8 一定要注重基础知识一定要注重基础知识一定要注重基础知识一定要注重基础知识一定要注重基础知识一定要注重基础知识
+
