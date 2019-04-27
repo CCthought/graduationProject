@@ -41,7 +41,8 @@ public class CartServiceImpl implements ICartService {
 
     @Override
     public List<CartResponse> getPageListCarts(Integer pageSize, Integer offset, String account) {
-        offset = (offset - 1) * pageSize; // 当前传过来的是 currentPage  需要进行转换
+        // 当前传过来的是 currentPage  需要进行转换
+        offset = (offset - 1) * pageSize;
         return cartDao.getPageListCarts(pageSize, offset, account);
     }
 
@@ -128,5 +129,10 @@ public class CartServiceImpl implements ICartService {
     @Override
     public Integer getCartIdByItemIdAndAccount(Integer itemId, String account,String color,Integer size) {
         return cartDao.getCartIdByItemIdAndAccount(itemId, account,color,size);
+    }
+
+    @Override
+    public Integer deleteCartByAccountAndItemId(Integer itemId, String account) {
+        return cartDao.deleteCartByAccountAndItemId(itemId,account);
     }
 }

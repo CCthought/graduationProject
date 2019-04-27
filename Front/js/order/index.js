@@ -11,7 +11,7 @@ function getPageOrders(currentPage, pageSize, account) {
         type: "GET",
         dataType: "json",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        url: "http://localhost:8084/getPageOrders",
+        url: "http://localhost:8762/order-service/getPageOrders",
         data: `currentPage=${currentPage}&pageSize=${pageSize}&account=${account}`,
         success: function (result) {
             if (result.head.code === '200') {
@@ -202,7 +202,7 @@ function changgeCount(id, count) {
         type: "GET",
         dataType: "json",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        url: "http://localhost:8082/changeCount",
+        url: "http://localhost:8762/cart-service/changeCount",
         data: `id=${id}&count=${count}`,
         success: function (result) {
             if (result.head.code === '200') {

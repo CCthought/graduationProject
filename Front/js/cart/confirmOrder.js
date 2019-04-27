@@ -15,7 +15,7 @@ function getPageCarts(currentPage, pageSize, account) {
         type: "GET",
         dataType: "json",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        url: "http://localhost:8082/getPageCarts",
+        url: "http://localhost:8762/cart-service/getPageCarts",
         data: `currentPage=${currentPage}&pageSize=${pageSize}&account=${account}`,
         success: function (result) {
             if (result.head.code === '200') {
@@ -38,7 +38,7 @@ function selectCartById(id) {
         type: "GET",
         dataType: "json",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        url: "http://localhost:8082/selectCartById",
+        url: "http://localhost:8762/cart-service/selectCartById",
         data: `id=${id}`,
         success: function (result) {
             if (result.head.code === '200') {
@@ -225,7 +225,7 @@ function changeCount(id, count) {
         type: "GET",
         dataType: "json",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        url: "http://localhost:8082/changeCount",
+        url: "http://localhost:8762/cart-service/changeCount",
         data: `id=${id}&count=${count}`,
         success: function (result) {
             if (result.head.code === '200') {
@@ -270,7 +270,7 @@ function commitOrder(result) {
             type: "GET",
             dataType: "json",
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            url: "http://localhost:8082/getAllMoney",
+            url: "http://localhost:8762/cart-service/getAllMoney",
             data: "account=" + getCookie('account'),
             success: function (result) {
                 if (result.head.code === '200') {
@@ -325,7 +325,7 @@ function commitOrder(result) {
                 type: "GET",
                 dataType: "json",
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                url: "http://localhost:8082/getAllCarts",
+                url: "http://localhost:8762/cart-service/getAllCarts",
                 data: "account=" + getCookie("account"),
                 success: function (result) {
                     if (result.head.code === '200') {
@@ -397,7 +397,8 @@ function changeMoney(money, account) {
 
 function insertOrder(result, orderAddress, orderReceiver, orderPhone) {
     let resultData = result;
-    if (result.body.hasOwnProperty('items')) { // 说明是分页数据小于5
+    // 说明是分页数据小于5 所以直接使用循环删除
+    if (result.body.hasOwnProperty('items')) {
         let isLastOne = result.body.items.length - 1;
         for (let i = 0; i < result.body.items.length; i++) {
             $.ajax({
@@ -405,7 +406,7 @@ function insertOrder(result, orderAddress, orderReceiver, orderPhone) {
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json",
-                url: "http://localhost:8084/insertOrder",
+                url: "http://localhost:8762/order-service/insertOrder",
                 data: JSON.stringify({
                     itemId: result.body.items[i].itemId,
                     category: result.body.items[i].category,
@@ -452,7 +453,7 @@ function insertOrder(result, orderAddress, orderReceiver, orderPhone) {
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json",
-                url: "http://localhost:8084/insertOrder",
+                url: "http://localhost:8762/order-service/insertOrder",
                 data: JSON.stringify({
                     itemId: result.body[i].itemId,
                     category: result.body[i].category,
@@ -501,7 +502,7 @@ function deleteCart(result, flag) { // flag -2 表示 totalRecords > 5   -1 表�
             type: "GET",
             dataType: "json",
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            url: "http://localhost:8082/deleteAllCarts",
+            url: "http://localhost:8762/cart-service/deleteAllCarts",
             data: "account=" + getCookie('account'),
             success: function (result) {
                 if (result.head.code === '200') {
@@ -520,7 +521,7 @@ function deleteCart(result, flag) { // flag -2 表示 totalRecords > 5   -1 表�
             type: "GET",
             dataType: "json",
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            url: "http://localhost:8082/deleteCartById",
+            url: "http://localhost:8762/cart-service/deleteCartById",
             data: "id=" + result.body.items[0].id,
             success: function (result) {
                 if (result.head.code === '200') {

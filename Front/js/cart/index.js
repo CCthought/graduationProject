@@ -11,7 +11,7 @@ function getPageCarts(currentPage, pageSize, account) {
         type: "GET",
         dataType: "json",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        url: "http://localhost:8082/getPageCarts",
+        url: "http://localhost:8762/cart-service/getPageCarts",
         data: `currentPage=${currentPage}&pageSize=${pageSize}&account=${account}`,
         success: function (result) {
             if (result.head.code === '200') {
@@ -195,7 +195,7 @@ function changgeCount(id,count){
         type: "GET",
         dataType: "json",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        url: "http://localhost:8082/changeCount",
+        url: "http://localhost:8762/cart-service/changeCount",
         data: `id=${id}&count=${count}`,
         success: function (result) {
             if (result.head.code === '200') {
@@ -218,7 +218,7 @@ function removeCart(id){
             type: "GET",
             dataType: "json",
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            url: "http://localhost:8082/deleteCartById",
+            url: "http://localhost:8762/cart-service/deleteCartById",
             data: `id=${id}`,
             success: function (result) {
                 if (result.head.code === '200') {
@@ -242,7 +242,7 @@ function removeAllCarts(){
             type: "GET",
             dataType: "json",
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            url: "http://localhost:8082/removeAllCarts",
+            url: "http://localhost:8762/cart-service/removeAllCarts",
             data: `account=${getCookie('account')}`,
             success: function (result) {
                 if (result.head.code === '200') {

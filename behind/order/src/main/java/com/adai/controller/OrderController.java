@@ -23,21 +23,20 @@ public class OrderController {
     private IOrderService orderService;
 
     @RequestMapping(value = "/insertOrder", method = RequestMethod.POST, consumes = "application/json")
-    public ActionResponse insertOrder(@RequestBody InsertOrder order){
+    public ActionResponse insertOrder(@RequestBody InsertOrder order) {
         System.err.println(order);
         System.err.println(order);
         System.err.println(order);
         Integer IS_SUCCESS = orderService.insertOrder(order);
-        if(IS_SUCCESS == 1){
-                return ActionResponse.success();
-        } else{
-            return new ActionResponse("497","订单插入失败");
+        if (IS_SUCCESS == 1) {
+            return ActionResponse.success();
+        } else {
+            return new ActionResponse("497", "订单插入失败");
         }
     }
 
     @RequestMapping(value = "/getPageOrders", method = RequestMethod.GET)
-    public ActionResponse getPageOrders(Integer pageSize, Integer currentPage, String account){
-        return ActionResponse.success(orderService.getPageOrders(pageSize,currentPage,account));
+    public ActionResponse getPageOrders(Integer pageSize, Integer currentPage, String account) {
+        return ActionResponse.success(orderService.getPageOrders(pageSize, currentPage, account));
     }
-
 }

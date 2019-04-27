@@ -140,4 +140,10 @@
         <include refid="Table_cart" />
         where account = #{account}
     </delete>
+
+    <delete id="deleteCartByAccountAndItemId">
+        delete from
+        <include refid="Table_cart" />
+        where account = #{account} and itemId = #{itemId}
+    </delete>
 </mapper>

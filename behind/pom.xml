@@ -15,6 +15,8 @@
         <module>cart</module>
         <module>order</module>
         <module>comments</module>
+        <module>zuulmy</module>
+        <module>eurekamy</module>
     </modules>
 
     <parent>

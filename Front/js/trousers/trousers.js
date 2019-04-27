@@ -259,7 +259,7 @@ function addCart(name, price, location, account, count, imgPath, itemId, categor
         type: "POST",
         dataType: "json",
         contentType: "application/json",
-        url: "http://localhost:8082/insertCart",
+        url: "http://localhost:8762/cart-service/insertCart",
         data: JSON.stringify({
             name: name,
             price: price,
@@ -283,7 +283,7 @@ function addCart(name, price, location, account, count, imgPath, itemId, categor
                     type: "GET",
                     dataType: "json",
                     contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                    url: "http://localhost:8082/getCartIdByItemIdAndAccount",
+                    url: "http://localhost:8762/cart-service/getCartIdByItemIdAndAccount",
                     data: `account=${account}&itemId=${itemId}&color=${color}&size=${size}`,
                     success: function (result) {
                         if (result.head.code === '200') {

@@ -6,6 +6,7 @@ import com.adai.utils.PageResult;
 import com.adai.vo.request.InsertCartRequest;
 import com.adai.vo.response.CartResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * author Adai
@@ -22,6 +24,8 @@ import java.util.List;
 @CrossOrigin
 public class CartController {
 
+    @Value("${server.port}")
+    private String port;
     @Autowired
     private ICartService cartService;
 
@@ -55,7 +59,7 @@ public class CartController {
     @RequestMapping(value = "/deleteCartById", method = RequestMethod.GET)
     public ActionResponse deleteCartById(Integer id) {
         Integer IS_SUCCESS = cartService.deleteCartById(id);
-        if (IS_SUCCESS == 1) {
+        if (IS_SUCCESS >= 0) {
             return ActionResponse.success();
         } else {
             return new ActionResponse("497", "删除失败");
@@ -92,7 +96,7 @@ public class CartController {
     @RequestMapping(value = "/deleteAllCarts", method = RequestMethod.GET)
     public ActionResponse deleteAllCarts(String account) {
         Integer IS_SUCCESS = cartService.deleteAllCarts(account);
-        if (IS_SUCCESS >= 1) {
+        if (IS_SUCCESS >= 0) {
             return ActionResponse.success();
         } else {
             return new ActionResponse("497", "删除购物车失败");
@@ -100,7 +104,43 @@ public class CartController {
     }
 
     @RequestMapping(value = "/getCartIdByItemIdAndAccount", method = RequestMethod.GET)
-    public ActionResponse getCartIdByItemIdAndAccount(Integer itemId, String account,String color,Integer size) {
-        return ActionResponse.success(cartService.getCartIdByItemIdAndAccount(itemId, account,color,size));
+    public ActionResponse getCartIdByItemIdAndAccount(Integer itemId, String account, String color, Integer size) {
+        return ActionResponse.success(cartService.getCartIdByItemIdAndAccount(itemId, account, color, size));
+    }
+
+    @RequestMapping(value = "/deleteCartByAccountAndItemId", method = RequestMethod.GET)
+    public String deleteCartByAccountAndItemId(Integer itemId, String account) {
+        Integer changeNumber = cartService.deleteCartByAccountAndItemId(itemId, account);
+        if (changeNumber == 1) {
+            return "200";
+        } else {
+            return "497";
+        }
+    }
+
+    /**
+     * 该方法执行逻辑和 deleteAllCarts 一样 不过判断条件不同 在这里 changeNumber > 0
+     * 而在deleteAllCarts中 changeNumber >= 0 就行了  这里是双保险 Pick feet
+     *
+     * @param account
+     * @return
+     */
+    @RequestMapping(value = "/deleteAllCartsByRemote", method = RequestMethod.GET)
+    public String deleteAllCartsByRemote(String account) {
+        Integer IS_SUCCESS = cartService.deleteAllCarts(account);
+        if (IS_SUCCESS > 0) {
+            return "200";
+        } else {
+            return "497";
+        }
+    }
+
+    /**
+     *  仅仅用来测试
+     * @return
+     */
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String hello(){
+        return "hello world" + port;
     }
 }
