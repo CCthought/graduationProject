@@ -91,20 +91,20 @@
     <select id="getAllCarts" resultType="com.adai.vo.response.CartResponse">
         select id,itemId,category,`name`,price,`count`,imgPath,color,`size`,location
         FROM
-        <include refid="Table_cart" />
+        <include refid="Table_cart"/>
         where account = #{account}
     </select>
 
     <select id="getCartIdByItemIdAndAccount" resultType="java.lang.Integer">
         select id from
-        <include refid="Table_cart" />
+        <include refid="Table_cart"/>
         <trim>
             where itemId = #{param1} and account = #{param2}
-            <if test = " param3 != null">
-               and color = #{param3}
+            <if test=" param3 != null">
+                and color = #{param3}
             </if>
-            <if test = " param4 != null">
-               and size = #{param4}
+            <if test=" param4 != null">
+                and size = #{param4}
             </if>
         </trim>
 
@@ -137,13 +137,19 @@
     </delete>
     <delete id="deleteAllCarts">
         delete from
-        <include refid="Table_cart" />
+        <include refid="Table_cart"/>
         where account = #{account}
     </delete>
 
     <delete id="deleteCartByAccountAndItemId">
         delete from
-        <include refid="Table_cart" />
+        <include refid="Table_cart"/>
         where account = #{account} and itemId = #{itemId}
+        <if test="color != null">
+            and color = #{color}
+        </if>
+        <if test="size != null">
+            and size = #{size}
+        </if>
     </delete>
 </mapper>

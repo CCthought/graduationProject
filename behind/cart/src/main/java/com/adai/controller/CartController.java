@@ -109,8 +109,8 @@ public class CartController {
     }
 
     @RequestMapping(value = "/deleteCartByAccountAndItemId", method = RequestMethod.GET)
-    public String deleteCartByAccountAndItemId(Integer itemId, String account) {
-        Integer changeNumber = cartService.deleteCartByAccountAndItemId(itemId, account);
+    public String deleteCartByAccountAndItemId(Integer itemId, String account, String color, Integer size) {
+        Integer changeNumber = cartService.deleteCartByAccountAndItemId(itemId, account, color, size);
         if (changeNumber == 1) {
             return "200";
         } else {

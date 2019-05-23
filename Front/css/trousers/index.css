@@ -1,12 +1,12 @@
 .show {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 1500px;
     height: 270px;
     margin: 20px auto;
 }
 
 .show-picture {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 250px;
     height: 250px;
     margin-top: 1px;
@@ -15,7 +15,7 @@
 }
 
 .show-text {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 500px;
     height: 190px;
     margin-top: 20px;
@@ -26,7 +26,7 @@
 }
 
 .core-trousers {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 1500px;
     height: auto;
     margin: 20px auto;
@@ -34,7 +34,7 @@
 }
 
 .addedTrousers {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 250px;
     height: 320px;
     margin-left: 40px;
@@ -43,7 +43,7 @@
 }
 
 .pageTurning {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 250px;
     height: 50px;
     margin: auto;
@@ -51,7 +51,7 @@
 }
 
 .pageTurningSquare {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 20px;
     height: 20px;
     margin-top: 30px;

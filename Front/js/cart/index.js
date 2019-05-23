@@ -113,6 +113,7 @@ function focusOnNumber(numberLi, plus, minus,price,totalMoneyDom,cartId) {
             totalMoneyDom.innerHTML = price;
         } else{
             changgeCount(cartId,numberLi.value); //更改数据库 count数量
+            totalMoneyDom.innerHTML = price * numberLi.value;
         }
     };
 

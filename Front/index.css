@@ -1,13 +1,13 @@
 /*search div start*/
 .search {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 1500px;
     height: 150px;
     margin: 20px auto;
 }
 
 .search-left {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 300px;
     height: 150px;
     margin-left: 50px;
@@ -15,7 +15,7 @@
 }
 
 .search-middle {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 600px;
     height: 150px;
     margin-left: 100px;
@@ -50,7 +50,7 @@
 
 /*core div start*/
 .core {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 1500px;
     height: 400px;
     margin: 20px auto;
@@ -58,7 +58,7 @@
 }
 
 .core-left {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 200px;
     height: 300px;
     margin-left: 150px;
@@ -74,7 +74,7 @@
 
 
 .core-middle {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 650px;
     height: 300px;
     margin-left: 50px;
@@ -150,7 +150,7 @@
 
 /*绝对定位 absolute*/
 .index-absolute {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 710px;
     height: 360px;
     margin-left: 350px;
@@ -175,7 +175,7 @@
 
 /*首页下面的items*/
 .core-clothes {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 1500px;
     height: auto;
     margin: 20px auto;
@@ -183,7 +183,7 @@
 }
 
 .addedClothes {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 250px;
     height: 320px;
     margin-left: 40px;
@@ -200,7 +200,7 @@
 }
 
 .pageTurningSquare {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 20px;
     height: 20px;
     margin-top: 30px;

@@ -40,10 +40,16 @@ public class OrderServiceImpl implements IOrderService {
             Integer updateChangeNumber = orderDao.updateSaled(order.getItemId(), order.getCount());
             if (updateChangeNumber == 1) {
                 // 更新成功 调用远程购物车服务 删除购物车
-                String remoteResult = cartService.deleteCartByAccountAndItemId(order.getItemId(), order.getAccount());
+                String remoteResult = cartService.deleteCartByAccountAndItemId(order.getItemId(), order.getAccount(),order.getColor(),order.getSize());
                 if (REMOTE_SUCCESS.equals(remoteResult)) {
+                    System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                     return updateChangeNumber;
                 } else {
+                    System.err.println("****************************************");
+                    System.err.println("****************************************");
+                    System.err.println("****************************************");
                     return -1;
                 }
             } else {

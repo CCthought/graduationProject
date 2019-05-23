@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CartServiceFallback implements CartService {
     @Override
-    public String deleteCartByAccountAndItemId(Integer itemId, String account) {
+    public String deleteCartByAccountAndItemId(Integer itemId, String account, String color, Integer size) {
         System.err.println("feign 调用cart-service deleteCartByAccountAndItemId 异常");
         return null;
     }

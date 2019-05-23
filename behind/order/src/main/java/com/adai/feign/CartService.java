@@ -22,7 +22,8 @@ public interface CartService {
      * @return
      */
     @RequestMapping(value = "/deleteCartByAccountAndItemId", method = RequestMethod.GET)
-    String deleteCartByAccountAndItemId(@RequestParam("itemId") Integer itemId, @RequestParam("account") String account);
+    String deleteCartByAccountAndItemId(@RequestParam("itemId") Integer itemId, @RequestParam("account") String account,
+                                        @RequestParam("color") String color, @RequestParam("size") Integer size);
 
     /**
      * 远程调用购物车方法 删除多条数据

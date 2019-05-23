@@ -119,7 +119,7 @@ function focusOnNumber(numberLi, plus, minus, price, totalMoneyDom, orderId) {
             numberLi.value = 1;
             totalMoneyDom.innerHTML = price;
         } else {
-            changgeCount(orderId, numberLi.value); //更改数据库 count数量
+            // changgeCount(orderId, numberLi.value); //更改数据库 count数量
         }
     };
 
@@ -127,7 +127,7 @@ function focusOnNumber(numberLi, plus, minus, price, totalMoneyDom, orderId) {
     plus.onclick = function () {
         let oldValue = numberLi.value;
         numberLi.value = Number.parseInt(oldValue) + 1;
-        changgeCount(orderId, numberLi.value); //更改数据库 count数量
+        // changgeCount(orderId, numberLi.value); //更改数据库 count数量
         totalMoneyDom.innerHTML = price * numberLi.value;
     };
 
@@ -138,7 +138,7 @@ function focusOnNumber(numberLi, plus, minus, price, totalMoneyDom, orderId) {
             return;
         }
         numberLi.value = Number.parseInt(oldValue) - 1;
-        changgeCount(orderId, numberLi.value); //更改数据库 count数量
+        // changgeCount(orderId, numberLi.value); //更改数据库 count数量
         totalMoneyDom.innerHTML = price * numberLi.value;
     };
 }

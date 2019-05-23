@@ -1,12 +1,12 @@
 .message {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 1500px;
     height: 500px;
     margin: 20px auto;
 }
 
 .message-picture {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 300px;
     height: 360px;
     margin-left: 100px;
@@ -15,7 +15,7 @@
 }
 
 .message-book {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 1000px;
     height: 400px;
     margin-left: 30px;
@@ -24,7 +24,7 @@
 }
 
 #message-book-name {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 900px;
     height: 50px;
     font-size: 20px;
@@ -34,7 +34,7 @@
 }
 
 #message-book-price {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 900px;
     height: 80px;
     margin-top: 1px;
@@ -48,7 +48,7 @@
 }
 
 #message-book-saledCommentsLocation {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 900px;
     height: 50px;
     margin-top: 1px;
@@ -64,7 +64,7 @@
 
 
 #message-book-taste {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 900px;
     height: auto;
     margin-top: 1px;
@@ -88,7 +88,7 @@
 }
 
 #message-book-number {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 900px;
     height: 40px;
     font-size: 20px;
@@ -103,7 +103,7 @@
 }
 
 #message-book-buyAndCart {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 900px;
     height: 80px;
     margin-top: 20px;
@@ -111,7 +111,7 @@
 }
 
 .message-book-buyAndCart {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 200px;
     height: 50px;
     font-size: 20px;
@@ -124,21 +124,21 @@
 
 /*评论 */
 #comments {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 1500px;
     height: auto;
     margin: 20px auto;
 }
 
 #myComments {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 1500px;
     height: 300px;
     margin: 20px auto;
 }
 
 #myComments li:first-child {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 100px;
     height: 50px;
     float: left;
@@ -159,14 +159,14 @@
 }
 
 .commentOneByOne {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 900px;
     height: 100px;
     margin: 20px auto;
 }
 
 #comment-account {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 100px;
     margin-top: 1px;
     margin-left: 1px;
@@ -175,7 +175,7 @@
 }
 
 #comment-time {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 200px;
     height: 20px;
     margin-top: 70px;
